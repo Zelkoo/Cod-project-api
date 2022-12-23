@@ -137,7 +137,7 @@ export class DataService {
   }
 
   // headers = new HttpHeaders({
-  //   'X-RapidAPI-Key': '49a2331fefmsh296cb0cdee345c2p1897a4jsnf8cf6569c4b9',
+  //   'X-RapidAPI-Key': '',
   //   'X-RapidAPI-Host': 'call-of-duty-modern-warfare.p.rapidapi.com'
   // });
   //
@@ -391,4 +391,3 @@ export class DataService {
   }
 
 }
-
