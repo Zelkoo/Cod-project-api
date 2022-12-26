@@ -1,6 +1,7 @@
-import {Component, Input, OnDestroy, OnInit, Output, VERSION, ViewChild} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, Output, SimpleChange, VERSION, ViewChild} from '@angular/core';
 import { DataService } from 'src/data.service';
 import * as d3 from 'd3';
+import {forkJoin} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -10,63 +11,227 @@ import * as d3 from 'd3';
 })
 
 export class AppComponent implements OnInit {
-  private data: any[];
-  private PistolData: any[]
+  inputValue: string;
+  private allWeaponData: any[];
+  private assaultRifleData: any[];
+  private shotgunData: any[]
+  private marksmanData: any[];
+  private pkmData: any[]
+  private sniperData: any[];
+  private machineGunData: any[]
+  private tacticalEqData: any[];
+  private killStreakData: any[]
+  private fieldUpgradeData: any[];
+  private pistolData: any[]
+  private rocketLuncherData: any[];
+  private meleeData: any[]
   constructor(public dataService: DataService) {
-    this.data = [
-      { name: 'ak47', value: 0 },
-      { name: 'an94', value: 0 },
-      { name: 'oden', value: 0 },
-      { name: 'fal', value: 0 },
-      { name: 'fr556', value: 0 },
-      { name: 'cr56amax', value: 0 },
-      { name: 'kilo141', value: 0 },
-      { name: 'm13', value: 0 },
-      { name: 'm4a1', value: 0 },
-      { name: 'fnscar17', value: 0 },
-      { name: 'grau556', value: 0 },
-      { name: 'ram7', value: 0 },
-      { name: 'asVal', value: 0 }
+    this.assaultRifleData = [
+      { name: null, value: null }
     ];
-    this.PistolData = [
-      { name: '_357', value: 54 },
-      { name: 'renetti', value: 897 },
-      { name: '_1911', value: 321 },
-      { name: 'x16', value: 423 },
-      { name: '_50gs', value: 2121 },
-      { name: 'm19', value: 32 },
+    this.shotgunData = [
+      { name: null, value: null },
     ];
+    this.marksmanData = [
+      { name: null, value: null },
+    ];
+    this.pkmData = [
+      { name: null, value: null },
+    ];
+    this.sniperData = [
+      { name: null, value: null },
+    ];
+    this.machineGunData = [
+      { name: null, value: null },
+    ];
+    this.tacticalEqData = [
+      { name: null, value: null },
+    ];
+    this.killStreakData = [
+      { name: null, value: null },
+    ];
+    this.fieldUpgradeData = [
+      { name: null, value: null },
+    ];
+    this.pistolData = [
+      { name: null, value: null },
+    ];
+    this.rocketLuncherData = [
+      { name: null, value: null },
+    ];
+    this.meleeData = [
+      { name: null, value: null },
+    ]
   }
   ngOnInit() {
+    const meleeData: any = {}
 
-    const rifleData: any = {}
-    const rifleNames = ['ak47', 'an94', 'oden', 'fal', 'fr556', 'cr56amax', 'kilo141', 'm13' , 'm4a1','fnscar17' ,'grau556' ,'ram7' ,'asVal'];
-    for (const rifleName of rifleNames) {
-      this.dataService.getAssaultRifleData(rifleName, 'kills')
+
+    const marksmanData: any = {}
+    const pkmData: any = {}
+    const sniperData: any = {}
+    const machineGunData: any = {}
+    const pistolData: any = {}
+    const rocketLuncherData: any = {}
+    const fieldUpgradeData: any = {}
+    const killStreakData: any = {}
+    const tacticalEqData: any = {}
+    const shotgunData: any = {}
+    const shotgunNames = ['model1680', 'r90', 'origin12', 'vlkRouge', 'jak12'];
+    const meleeNames = ['knife', 'akimboBlades', 'akimboBlunt', 'shield'];
+    const marksmanNames = ['ebr14', 'mk2Carbine', 'kark98k', 'crossBow', 'sks', 'srpr208'];
+    const pkmNames = ['pkm', 'sa87', 'm91', 'mg34', 'holger26', 'burenMk9', 'rkmFinn', 'kmRaal'];
+    const sniperNames = ['ax50', 'rytecAmr', 'hdr', 'dragunow'];
+    const machineGunNames = ['mp7', 'aug', 'p90', 'iso', 'mp5', 'striker45', 'pp19Bizon', 'fennec', 'uzi'];
+    const pistolNames = ['_357', 'renetti', '_1911', 'x16', '_50gs', 'm19'];
+    const rocketLuncherNames = ['pila', 'rpg7', 'joker', 'sterlap'];
+    const fieldUpgradeNames = ['droneIem', 'trophy', 'supplyDrop', 'drop', 'armorBox', 'recon', 'deadSilence', 'tacticShield', 'powerAmmo', 'balon'];
+    const killStreakNames = ['airStrike', 'cruiseMissile', 'manualTurret', 'whitePhosphorus', 'jetVtol','chopperGunner', 'gunShip', 'autoTurret', 'clusterFire', 'colos', 'chopperSupport', 'wheelson', 'airDrop', 'chopperRadar', 'counterUav', 'uav', 'superUav'];
+    const tacticalEqNames = ['gasGranate', 'wykrywajacy', 'decoy', 'smoke', 'ogluszajacy', 'sensorPulse', 'flesh', 'adrealine', 'granate', 'thermit', 'claymore', 'c4', 'mine', 'throwingKnife', 'molotov'];
+
+
+    for (let i = 0; i < shotgunNames.length; i++) {
+      const shotguneName = shotgunNames[i];
+      this.dataService.getShotgunRifleData(shotguneName, 'kills')
         .subscribe((data: any) => {
-          rifleData[rifleName] = data;
-          this.data[0].value = rifleData.ak47
-          this.data[1].value = rifleData.an94
-          this.data[2].value = rifleData.oden
-          this.data[3].value = rifleData.fal
-          this.data[4].value = rifleData.fr556
-          this.data[5].value = rifleData.cr56amax
-          this.data[6].value = rifleData.kilo141
-          this.data[7].value = rifleData.m13
-          this.data[8].value = rifleData.m4a1
-          this.data[9].value = rifleData.fnscar17
-          this.data[11].value = rifleData.grau556
-          this.data[12].value = rifleData.ram7
-          this.data[13].value = rifleData.asVal
+          shotgunData[shotguneName] = data;
+          this.shotgunData[i] = {
+            name: shotguneName,
+            value: shotgunData[shotguneName]
+          };
         });
     }
-    setTimeout(() => {
-      this.data.sort((a, b) => {
-        return b.value - a.value
-      })
-      this.createChart(this.data)
-    }, 500)
+    for (let i = 0; i < marksmanNames.length; i++) {
+      const marksmaneName = marksmanNames[i];
+      this.dataService.getMarksmanRifleData(marksmaneName, 'kills')
+        .subscribe((data: any) => {
+          marksmanData[marksmaneName] = data;
+          this.marksmanData[i] = {
+            name: marksmaneName,
+            value: marksmanData[marksmaneName]
+          };
+        });
+    }
+    for (let i = 0; i < pkmNames.length; i++) {
+      const pkmName = pkmNames[i];
+      this.dataService.getLargeMachineGunqData(pkmName, 'kills')
+        .subscribe((data: any) => {
+          pkmData[pkmName] = data;
+          this.pkmData[i] = {
+            name: pkmName,
+            value: pkmData[pkmName]
+          };
+        });
+    }
+    for (let i = 0; i < sniperNames.length; i++) {
+      const sniperName = sniperNames[i];
+      this.dataService.getSniperRifleData(sniperName, 'kills')
+        .subscribe((data: any) => {
+          sniperData[sniperName] = data;
+          this.sniperData[i] = {
+            name: sniperName,
+            value: sniperData[sniperName]
+          };
+        });
+    }
+    for (let i = 0; i < machineGunNames.length; i++) {
+      const machineGunName = machineGunNames[i];
+      this.dataService.getMachineGunData(machineGunName, 'kills')
+        .subscribe((data: any) => {
+          machineGunData[machineGunName] = data;
+          this.machineGunData[i] = {
+            name: machineGunName,
+            value: machineGunData[machineGunName]
+          };
+        });
+    }
+    for (let i = 0; i < tacticalEqNames.length; i++) {
+      const tacticalEqName = tacticalEqNames[i];
+      this.dataService.getTacticalEqData(tacticalEqName, 'uses')
+        .subscribe((data: any) => {
+          tacticalEqData[tacticalEqName] = data;
+          this.tacticalEqData[i] = {
+            name: tacticalEqName,
+            value: tacticalEqData[tacticalEqName]
+          };
+        });
+    }
+    for (let i = 0; i < killStreakNames.length; i++) {
+      const killStreakName = killStreakNames[i];
+      this.dataService.getKillsStreakData(killStreakName, 'uses')
+        .subscribe((data: any) => {
+          killStreakData[killStreakName] = data;
+          this.killStreakData[i] = {
+            name: killStreakName,
+            value: killStreakData[killStreakName]
+          };
+        });
+    }
+    for (let i = 0; i < fieldUpgradeNames.length; i++) {
+      const fieldUpgradeName = fieldUpgradeNames[i];
+      this.dataService.getFieldUpgradesData(fieldUpgradeName, 'uses')
+        .subscribe((data: any) => {
+          fieldUpgradeData[fieldUpgradeName] = data;
+          this.fieldUpgradeData[i] = {
+            name: fieldUpgradeName,
+            value: fieldUpgradeData[fieldUpgradeName]
+          };
+        });
+    }
+    for (let i = 0; i < pistolNames.length; i++) {
+      const pistolName = pistolNames[i];
+      this.dataService.getPistolData(pistolName, 'kills')
+        .subscribe((data: any) => {
+          pistolData[pistolName] = data;
+          this.pistolData[i] = {
+            name: pistolName,
+            value: pistolData[pistolName]
+          };
+        });
+    }
+    for (let i = 0; i < rocketLuncherNames.length; i++) {
+      const rocketLuncherName = rocketLuncherNames[i];
+      this.dataService.getShotgunRifleData(rocketLuncherName, 'kills')
+        .subscribe((data: any) => {
+          rocketLuncherData[rocketLuncherName] = data;
+          this.rocketLuncherData[i] = {
+            name: rocketLuncherName,
+            value: rocketLuncherData[rocketLuncherName]
+          };
+        });
+    }
+    for (let i = 0; i < meleeNames.length; i++) {
+      const meleeeName = meleeNames[i];
+      this.dataService.getShotgunRifleData(meleeeName, 'kills')
+        .subscribe((data: any) => {
+          meleeData[meleeeName] = data;
+          this.meleeData[i] = {
+            name: meleeeName,
+            value: meleeData[meleeeName]
+          };
+        });
+    }
   }
+
+  onClick(): any {
+    const rifleData: any = {};
+    const rifleNames = ['ak47', 'an94', 'oden', 'fal', 'fr556', 'cr56amax', 'kilo141', 'm13' , 'm4a1','fnscar17' ,'grau556' ,'ram7' ,'asVal'];
+
+    const observables = rifleNames.map(rifleName => this.dataService.getAssaultRifleData(rifleName, this.inputValue));
+
+    forkJoin(observables).subscribe((results: any[]) => {
+      results.forEach((result, index) => {
+        const rifleName = rifleNames[index];
+        rifleData[rifleName] = result;
+      });
+
+      this.assaultRifleData = Object.entries(rifleData).map(([name, value]) => ({ name, value }));
+      this.assaultRifleData.sort((a, b) => b.value - a.value);
+      this.createChart(this.assaultRifleData);
+    });
+  }
+
+
   private createChart(data: any[]) {
     const element = d3.select('.chart');
     const svg = element.append('svg')
@@ -117,6 +282,7 @@ export class AppComponent implements OnInit {
       .attr('y', d => y(d.value))
       .attr('fill', d => d.value > 200 ? '#004d99' : '#003366')
       .attr('width', x.bandwidth())
+      .text('lolololol')
       .attr('height', d => height - y(d.value))
       .attr('title', d => d.value)
       .on('mouseover', function() {
@@ -125,6 +291,7 @@ export class AppComponent implements OnInit {
     })
       .on('mouseout', function() {
         d3.select(this).style('fill', (d: any) => d.value > 200 ? '#004d99' : '#003366');
-      });;
+        d3.select(this).style('fill', (d: any) => d.value < 200 ? 'black' : '#004d99');
+      });
   }
 }
