@@ -12,7 +12,6 @@ import {forkJoin} from "rxjs";
 
 export class AppComponent implements OnInit {
   inputValue: string;
-  private allWeaponData: any[];
   private assaultRifleData: any[];
   private shotgunData: any[]
   private marksmanData: any[];
@@ -228,15 +227,49 @@ export class AppComponent implements OnInit {
       this.assaultRifleData = Object.entries(rifleData).map(([name, value]) => ({ name, value }));
       this.assaultRifleData.sort((a, b) => b.value - a.value);
       this.createChart(this.assaultRifleData);
+      this.createLegend(rifleNames)
     });
   }
+  private createLegend(data: any[]) {
+    const Svg = d3.select("#my_dataviz2")
 
+    const color = d3.scaleOrdinal()
+      .domain(data)
+      .range(d3.schemeSet2);
+
+    Svg.selectAll("mydots")
+      .data(data)
+      .enter()
+      .append("circle")
+      .attr("cx", 100)
+      .attr("cy", function(d,i){ return 100 + i*25})
+      //@ts-ignore
+      .attr("r", 7)
+      //@ts-ignore
+      .style("fill", function(d){ return color(d)})
+
+    Svg.selectAll("mylabels")
+      .data(data)
+      .enter()
+      .append("text")
+      .attr("x", 120)
+      .attr("y", function(d,i){ return 100 + i*25}) //
+      //@ts-ignore
+      .style("fill", function(d){ return color(d)})
+      .text(function(d){ return d})
+      .attr("text-anchor", "left")
+      .style("alignment-baseline", "middle")
+  }
 
   private createChart(data: any[]) {
     const element = d3.select('.chart');
     const svg = element.append('svg')
       .attr('width', 800)
       .attr('height', 600);
+
+    const color = d3.scaleOrdinal()
+      .domain(data)
+      .range(d3.schemeSet2);
 
     const margin = {
       top: 20,
@@ -279,19 +312,16 @@ export class AppComponent implements OnInit {
       .enter().append('rect')
       .attr('class', 'bar')
       .attr('x', d => x(d.name))
-      .attr('y', d => y(d.value))
-      .attr('fill', d => d.value > 200 ? '#004d99' : '#003366')
+      .attr('y', d => y(d.value))//@ts-ignore
+      .attr("fill", "black")
+      .attr("opacity", 0.5)//@ts-ignore
+      .style("fill", function(d){ return color(d)})
       .attr('width', x.bandwidth())
       .text('lolololol')
       .attr('height', d => height - y(d.value))
       .attr('title', d => d.value)
       .on('mouseover', function() {
       d3.select(this).style('cursor', 'pointer')
-        d3.select(this).style('fill', '#ff0000');
     })
-      .on('mouseout', function() {
-        d3.select(this).style('fill', (d: any) => d.value > 200 ? '#004d99' : '#003366');
-        d3.select(this).style('fill', (d: any) => d.value < 200 ? 'black' : '#004d99');
-      });
   }
-}
+};

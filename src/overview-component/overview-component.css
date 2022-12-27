@@ -1,0 +1,87 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  margin-top: 5rem;
+  border: solid #8989ff 3px;
+  border-radius: 4px ;
+  background-color: #2D3640;
+}
+
+header {
+  display: flex;
+  justify-content: flex-start;
+  height: 137px;
+  background: linear-gradient(to right,#192D4D 0%,#2A4E55 100%);
+}
+
+.larger-div {
+  display: flex;
+  position: relative;
+  top: -62px;
+  justify-content: space-between;
+}
+
+.tiles {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  margin: 0 20px;
+  top: -50px;
+  position: relative;
+}
+
+.tile {
+  flex-basis: 254px;
+  flex-grow: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  margin: 2px;
+  border-radius: 8px;
+  height: 68px;
+  width: auto;
+  background-color: #3B4754;
+  box-shadow: 0 3px 6px #00000026;
+
+}
+
+.small-sections {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.small-section {
+  width: 25%;
+}
+section {
+  width: 16.666666667%; /* 100% / 6 */
+  margin: 5px;
+}
+.tiles {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.points{
+  height: 67px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.points:hover{
+  background-color: rgba(95, 112, 138, 0.67);
+  border-radius: 5px;
+  border: #4e5d70;
+  cursor: pointer;
+}
+.tile:hover{
+  background-color: #404d5b;
+  cursor: pointer;
+}
