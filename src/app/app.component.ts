@@ -12,60 +12,23 @@ import {forkJoin} from "rxjs";
 
 export class AppComponent implements OnInit {
   inputValue: string;
-  private assaultRifleData: any[];
-  private shotgunData: any[]
-  private marksmanData: any[];
-  private pkmData: any[]
-  private sniperData: any[];
-  private machineGunData: any[]
-  private tacticalEqData: any[];
-  private killStreakData: any[]
-  private fieldUpgradeData: any[];
-  private pistolData: any[]
-  private rocketLuncherData: any[];
-  private meleeData: any[]
+  public assaultRifleData: any[];
+  public shotgunData: any[]
+  public marksmanData: any[];
+  public pkmData: any[]
+  public sniperData: any[];
+  public machineGunData: any[]
+  public tacticalEqData: any[];
+  public killStreakData: any[]
+  public fieldUpgradeData: any[];
+  public pistolData: any[]
+  public rocketLuncherData: any[];
+  public meleeData: any[]
   constructor(public dataService: DataService) {
-    this.assaultRifleData = [
-      { name: null, value: null }
-    ];
-    this.shotgunData = [
-      { name: null, value: null },
-    ];
-    this.marksmanData = [
-      { name: null, value: null },
-    ];
-    this.pkmData = [
-      { name: null, value: null },
-    ];
-    this.sniperData = [
-      { name: null, value: null },
-    ];
-    this.machineGunData = [
-      { name: null, value: null },
-    ];
-    this.tacticalEqData = [
-      { name: null, value: null },
-    ];
-    this.killStreakData = [
-      { name: null, value: null },
-    ];
-    this.fieldUpgradeData = [
-      { name: null, value: null },
-    ];
-    this.pistolData = [
-      { name: null, value: null },
-    ];
-    this.rocketLuncherData = [
-      { name: null, value: null },
-    ];
-    this.meleeData = [
-      { name: null, value: null },
-    ]
+
   }
   ngOnInit() {
     const meleeData: any = {}
-
-
     const marksmanData: any = {}
     const pkmData: any = {}
     const sniperData: any = {}
@@ -100,6 +63,7 @@ export class AppComponent implements OnInit {
           };
         });
     }
+
     for (let i = 0; i < marksmanNames.length; i++) {
       const marksmaneName = marksmanNames[i];
       this.dataService.getMarksmanRifleData(marksmaneName, 'kills')
