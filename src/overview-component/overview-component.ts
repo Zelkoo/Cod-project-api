@@ -22,6 +22,9 @@ export class OverviewComponent implements OnInit, OnDestroy {
   scorePerMinute: number;
   scorePerGame: number;
   totalShots: number;
+  timePlayedTotal: any
+  totalGamesPlayed: any
+  winLossRatio: any
   constructor(private readonly dataService: DataService) {
   }
   ngOnInit() {
@@ -36,11 +39,14 @@ export class OverviewComponent implements OnInit, OnDestroy {
       this.dataService.getOverviewData(OverviewDataType.Headshots),
       this.dataService.getOverviewData(OverviewDataType.Deaths),
       this.dataService.getOverviewData(OverviewDataType.BestKillStreak),
-      this.dataService.getOverviewData(OverviewDataType.Losses)
-    ]).subscribe(([scorePerMinute, scorePerGame, totalShots, wins, kdRatio, kills, assists, headshots, deaths, bestKillStreak, losses]
+      this.dataService.getOverviewData(OverviewDataType.Losses),
+      this.dataService.getOverviewData('timePlayedTotal'),
+      this.dataService.getOverviewData('totalGamesPlayed'),
+      this.dataService.getOverviewData('winLossRatio')
+    ]).subscribe(([scorePerMinute, scorePerGame, totalShots, wins, kdRatio, kills, assists, headshots, deaths, bestKillStreak, losses, timePlayedTotal, totalGamesPlayed, winLossRatio]
     ) => {
-      this.scorePerMinute = scorePerMinute;
-      this.scorePerGame = scorePerGame;
+      this.scorePerMinute = scorePerMinute.toFixed(2);
+      this.scorePerGame = scorePerGame.toFixed(2);
       this.totalShots = totalShots;
       this.wins = wins;
       this.kdRatio = kdRatio.toFixed(2);
@@ -50,6 +56,9 @@ export class OverviewComponent implements OnInit, OnDestroy {
       this.deaths = deaths;
       this.bestKillStreak = bestKillStreak;
       this.losses = losses;
+      this.timePlayedTotal = (timePlayedTotal / 60 / 60).toFixed(0)
+      this.totalGamesPlayed = totalGamesPlayed
+      this.winLossRatio = winLossRatio.toFixed(2)
     });
   }
 

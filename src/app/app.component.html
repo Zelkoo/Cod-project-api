@@ -1,31 +1,36 @@
 
 <nav-menu class="bg"></nav-menu>
 <router-outlet></router-outlet>
+<div class="input-button">
+
 
 <input type="text" [(ngModel)]="inputValue">
-<button (click)="onClick()">Get new data</button>
-<div>
-  <svg id="my_dataviz2" height=100 width=200></svg>
-  <div class="chart"></div>
-</div>
+  <button (click)="loadAssaultRifleData()">Get new data</button>
+  <div>
+    <svg id="my_dataviz2" height=100 width=200></svg>
+    <div class="chart"></div>
+  </div>
 
-<div>
-  <h1>Data to test</h1>
-  <li>
-    hits
+  <div style="top: 20px;
+    position: absolute;">
+    <h1>Data to test</h1>
+    <li>
+      hits
     </li>
-  <li>
-    kills
+    <li>
+      kills
 
-  </li>
-  <li>
-    kdRatio
+    </li>
+    <li>
+      kdRatio
 
-  </li>
-  <li>headshots</li>
-  <li>accuracy</li>
-  <li>shots</li>
-  <li>deaths</li>
+    </li>
+    <li>headshots</li>
+    <li>accuracy</li>
+    <li>shots</li>
+    <li>deaths</li>
+  </div>
 </div>
+
 
 

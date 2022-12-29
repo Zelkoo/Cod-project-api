@@ -2,3 +2,13 @@ svg{
   width: 100%;
   height: 100%;
 }
+.input-button{
+  top: 69px;
+  position: absolute;
+}
+.chart{
+  position: absolute;
+  top: 500px;
+}
+
+

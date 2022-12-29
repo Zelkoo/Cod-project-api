@@ -63,7 +63,6 @@ export class AppComponent implements OnInit {
           };
         });
     }
-
     for (let i = 0; i < marksmanNames.length; i++) {
       const marksmaneName = marksmanNames[i];
       this.dataService.getMarksmanRifleData(marksmaneName, 'kills')
@@ -176,7 +175,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  onClick(): any {
+  loadAssaultRifleData(): any {
     const rifleData: any = {};
     const rifleNames = ['ak47', 'an94', 'oden', 'fal', 'fr556', 'cr56amax', 'kilo141', 'm13' , 'm4a1','fnscar17' ,'grau556' ,'ram7' ,'asVal'];
 
@@ -191,7 +190,7 @@ export class AppComponent implements OnInit {
       this.assaultRifleData = Object.entries(rifleData).map(([name, value]) => ({ name, value }));
       this.assaultRifleData.sort((a, b) => b.value - a.value);
       this.createChart(this.assaultRifleData);
-      this.createLegend(rifleNames)
+      // this.createLegend(rifleNames)
     });
   }
   private createLegend(data: any[]) {
@@ -228,8 +227,8 @@ export class AppComponent implements OnInit {
   private createChart(data: any[]) {
     const element = d3.select('.chart');
     const svg = element.append('svg')
-      .attr('width', 800)
-      .attr('height', 600);
+      .attr('width', 1500)
+      .attr('height', 500);
 
     const color = d3.scaleOrdinal()
       .domain(data)
@@ -277,7 +276,7 @@ export class AppComponent implements OnInit {
       .attr('class', 'bar')
       .attr('x', d => x(d.name))
       .attr('y', d => y(d.value))//@ts-ignore
-      .attr("fill", "black")
+      .attr("fill", "white")
       .attr("opacity", 0.5)//@ts-ignore
       .style("fill", function(d){ return color(d)})
       .attr('width', x.bandwidth())
