@@ -61,6 +61,7 @@ header {
 section {
   width: 16.666666667%; /* 100% / 6 */
   margin: 5px;
+  color: white;
 }
 .tiles {
   display: flex;

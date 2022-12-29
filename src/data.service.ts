@@ -149,7 +149,13 @@ export class DataService {
   public fetchData(): Observable<any> {
     return this.http.get('./assets/cod-data.json');
   }
-
+getOverviewData(prop: any): Observable<any> {
+    return this.fetchData().pipe(map((data: any) => {
+      const fullData = data
+      const propertiesData = fullData.lifetime.all.properties
+      return propertiesData[prop]
+    }))
+}
   getAssaultRifleData(weaponName: string, properties: string): Observable<any> {
     let weapons: any
     return this.fetchData().pipe(
