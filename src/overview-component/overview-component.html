@@ -1,9 +1,13 @@
 <div class="container">
   <div class="header">
   <header>
-    <section class="lifetime">Lifetime</section>
-    <section class="play-time">Play Time</section>
-    <section class="matches">Matches</section>
+    <div class="lifetime-section">
+    <section class="lifetime">
+      <h1>Lifetime Overview</h1>
+    </section>
+    <section class="play-time" style="color: white">Play Time: {{timePlayedTotal}}h</section>
+    <section class="matches">Matches: {{totalGamesPlayed}}</section>
+    </div>
   </header>
   </div>
   <div class="larger-div">
@@ -11,22 +15,36 @@
     <section class="level">Level</section>
   </div>
   <div class="tiles">
-    <div class="tile">KDR</div>
-    <div class="tile">Kills </div>
-    <div class="tile">Win%</div>
-    <div class="tile">Wins</div>
+    <div class="tile">
+      KDR
+      {{kdRatio}}
+    </div>
+    <div class="tile">
+      Kills
+      {{kills}}
+    </div>
+    <div class="tile">
+      Win/Lose Ratio
+      {{winLossRatio}}
+    </div>
+    <div class="tile">
+      Wins
+      {{wins}}
+    </div>
   </div>
+  <hr class="line"/>
   <div class="small-sections">
-    <section class="kills points">Kills {{kills}}</section>
-    <section class="streak points">Streak {{bestKillStreak}}</section>
-    <section class="loses points">Loses {{losses}}</section>
-    <section class="win points">Wins {{wins}}</section>
-    <section class="current-win points">Current Win </section>
-    <section class="deaths points">Deaths {{deaths}}</section>
-    <section class="av-life points">KD {{kdRatio}}</section>
-    <section class="assist points">Assist {{assists}}</section>
-    <section class="score-min points">Score/Min {{scorePerMinute}}</section>
-    <section class="score-game points">Score/Game {{scorePerGame}}</section>
-    <section class="score points">Shots {{totalShots}}</section>
+
+    <section class="kills points">Total Kills <span>{{kills}}</span></section>
+    <section class="streak points">Streak <span>{{bestKillStreak}}</span></section>
+    <section class="loses points">Loses <span>{{losses}}</span></section>
+    <section class="win points">Wins <span>{{wins}}</span></section>
+    <section class="current-win points">Current Win <span>1532</span></section>
+    <section class="deaths points">Deaths <span>{{deaths}}</span></section>
+    <section class="av-life points">KD <span>{{kdRatio}}</span></section>
+    <section class="assist points">Assist <span>{{assists}}</span></section>
+    <section class="score-min points">Score/Min <span>{{scorePerMinute}}</span></section>
+    <section class="score-game points">Score/Game <span>{{scorePerGame}}</span></section>
+    <section class="score points">Shots <span>{{totalShots}}</span></section>
   </div>
 </div>
