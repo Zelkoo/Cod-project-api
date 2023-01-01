@@ -22,18 +22,19 @@ export class DonutChartService {
       .attr(
         'transform',
         'translate(' + this.width / 2 + ',' + this.height / 2 + ')'
-      );
+      )
 
     const color = d3.scaleOrdinal(['red', 'green']);
     const pie = d3
       .pie()
       .value((d: any) => d.count)
-      .sort(null);
+      .sort(null)
+
 
     const path = d3
       .arc()
       .outerRadius(this.radius)
-      .innerRadius(this.radius / 2);
+      .innerRadius(this.radius / 1.10);
 
     const arc = svg
       .selectAll('.arc')
@@ -47,8 +48,12 @@ export class DonutChartService {
       .attr('fill', (d: any) => color(d.data.label));
 
     arc.append('text')
+      .transition()
+      .duration(750)
       .attr('transform', (d: any) => 'translate(' + path.centroid(d) + ')')
       .attr('dy', '0.35em')
-      .text((d: any) => d.data.label);
+      .attr('fill', 'white')
+      .text((d: any) => d.data.label)
+      .attr('title', (d: any) => d.data.name);
   }
 }
