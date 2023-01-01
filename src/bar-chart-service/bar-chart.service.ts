@@ -9,6 +9,7 @@ export class BarChartService {
   constructor() { }
 
   public createBarChart(data: { name: string, value: number }[], el: string) {
+    let selected = false
     const element = d3.select(el);
     const svg = element.append('svg')
       .attr('width', 1000)
@@ -53,9 +54,22 @@ export class BarChartService {
       .attr("fill", "white")
       .attr('text-anchor', 'end')
 
+
+
     g.selectAll('.bar')
       .data(data)
       .enter().append('rect')
+      .on("click", function() {
+        if (selected) {
+          d3.select(this).attr("stroke", null);
+          d3.select("#text-box").style("display", "none");
+          selected = false;
+        } else {
+          d3.select(this).attr("stroke-width", "4px").attr("stroke", "black");
+          d3.select("#text-box").style("display", "block").text("Zaznaczono słupek");
+          selected = true;
+        }
+      })
       .attr('class', 'bar')
       .attr('x', d => x(d.name))
       .attr('y', d => y(d.value))
