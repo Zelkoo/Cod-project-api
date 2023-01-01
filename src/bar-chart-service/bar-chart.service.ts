@@ -85,7 +85,7 @@ export class BarChartService {
       .data(data)
       .enter()
       .append('text')
-      .attr('fill', '#494040')
+      .attr('fill', '#ffffff')
       .attr('x', 15)
       .attr('y', (d: any, i: number) => i * 20 + 9)
       .attr('font-size', '20px')
