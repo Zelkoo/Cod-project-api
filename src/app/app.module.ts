@@ -10,6 +10,7 @@ import {MatchComponent} from "../match-component/match-component";
 import {WeaponsComponent} from "../weapons-component/weapons-component";
 import {OverviewComponent} from "../overview-component/overview-component";
 import {BarChartService} from "../bar-chart-service/bar-chart.service";
+import {DonutChartService} from "../pie-chart-service/donut-chart-service";
 
 const routes: Routes = [
   { path: 'match-component', component: MatchComponent },
@@ -33,7 +34,7 @@ const routes: Routes = [
 
     ],
   exports: [RouterModule],
-  providers: [DataService, BarChartService],
+  providers: [DataService, BarChartService, DonutChartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
