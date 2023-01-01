@@ -1,0 +1,125 @@
+*{
+  color: white;
+}
+
+.back-button{
+  appearance: none;
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+.back-button:hover {
+  background-color: #30c730;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.back-button:disabled {
+  background-color: #FAFBFC;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959DA5;
+  cursor: default;
+}
+
+.back-button:active {
+  background-color: #EDEFF2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+.back-button:focus {
+  outline: 1px transparent;
+}
+
+.back-button:before {
+  display: none;
+}
+
+.back-button::-webkit-details-marker {
+  display: none;
+}
+
+.weapon-container {
+  display: flex;
+  border: 2px solid red;
+  width: 33%;
+  height: 90%;
+  position: absolute;
+  top: 80px;
+  left: 60px;
+  flex-direction: column;
+}
+.title{
+  border: 2px solid red;
+  margin: 0;
+  height: 10%;
+  display: flex;
+  position: relative;
+  align-self: flex-start;
+  align-items: center;
+  gap: 20px;
+  padding-left: 25px
+}
+
+.title-text{
+  color: #c6c6c6b3
+}
+
+.overview {
+  display: flex;
+  justify-content: space-evenly;
+  height: 70px;
+  border: 1px solid red;
+  align-items: center;
+}
+.test{
+  display: flex;
+  justify-content: space-evenly;
+  height: 70px;
+  border: 1px solid red;
+  align-items: center;
+}
+.container {
+  display: flex;
+  height: 100px;
+  width: auto;
+  justify-content: center;
+  gap: 50px;
+  margin: 30px;
+}
+
+.square {
+  width: 300px;
+  height: 410px;
+  border: 1px solid red;
+}
+
+.rekord{
+  display: flex;
+  position: relative;
+  top: 300px;
+  width: auto;
+  margin: 25px;
+  justify-content: center;
+  border: 1px red solid;
+  height: 130px;
+}

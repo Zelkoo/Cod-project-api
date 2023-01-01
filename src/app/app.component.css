@@ -6,9 +6,12 @@ svg{
   top: 69px;
   position: absolute;
 }
-.chart{
+.bar-chart-data-kills{
+  display: flex;
   position: absolute;
-  top: 500px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  bottom: 0;
+  right: 0;
+  color: white;
 }
-
-

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { DataService } from "../data.service";
 import { HttpClientModule } from "@angular/common/http";
@@ -10,6 +9,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {MatchComponent} from "../match-component/match-component";
 import {WeaponsComponent} from "../weapons-component/weapons-component";
 import {OverviewComponent} from "../overview-component/overview-component";
+import {BarChartService} from "../bar-chart-service/bar-chart.service";
 
 const routes: Routes = [
   { path: 'match-component', component: MatchComponent },
@@ -23,7 +23,7 @@ const routes: Routes = [
     MenuNavigationComponent,
     MatchComponent,
     WeaponsComponent,
-    OverviewComponent
+    OverviewComponent,
   ],
     imports: [
         BrowserModule,
@@ -33,7 +33,7 @@ const routes: Routes = [
 
     ],
   exports: [RouterModule],
-  providers: [DataService],
+  providers: [DataService, BarChartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

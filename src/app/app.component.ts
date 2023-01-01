@@ -2,6 +2,7 @@ import {Component, Input, OnDestroy, OnInit, Output, SimpleChange, VERSION, View
 import { DataService } from 'src/data.service';
 import * as d3 from 'd3';
 import {forkJoin} from "rxjs";
+import {BarChartService} from "../bar-chart-service/bar-chart.service";
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,7 @@ export class AppComponent implements OnInit {
   public pistolData: any[]
   public rocketLuncherData: any[];
   public meleeData: any[]
-  constructor(public dataService: DataService) {
+  constructor(public dataService: DataService, public barChartService: BarChartService) {
 
   }
   ngOnInit() {
@@ -105,6 +106,7 @@ export class AppComponent implements OnInit {
             name: machineGunName,
             value: machineGunData[machineGunName]
           };
+          // this.createChart(this.machineGunData, '.chart')
         });
     }
     for (let i = 0; i < tacticalEqNames.length; i++) {
@@ -174,12 +176,15 @@ export class AppComponent implements OnInit {
         });
     }
   }
-
+  ngOnDestroy() {
+    const svg = d3.select('svg');
+    svg.remove();
+  }
   loadAssaultRifleData(): any {
     const rifleData: any = {};
     const rifleNames = ['ak47', 'an94', 'oden', 'fal', 'fr556', 'cr56amax', 'kilo141', 'm13' , 'm4a1','fnscar17' ,'grau556' ,'ram7' ,'asVal'];
 
-    const observables = rifleNames.map(rifleName => this.dataService.getAssaultRifleData(rifleName, this.inputValue));
+    const observables = rifleNames.map(rifleName => this.dataService.getAssaultRifleData(rifleName, 'kills'));
 
     forkJoin(observables).subscribe((results: any[]) => {
       results.forEach((result, index) => {
@@ -189,8 +194,8 @@ export class AppComponent implements OnInit {
 
       this.assaultRifleData = Object.entries(rifleData).map(([name, value]) => ({ name, value }));
       this.assaultRifleData.sort((a, b) => b.value - a.value);
-      this.createChart(this.assaultRifleData);
-      // this.createLegend(rifleNames)
+      // this.createChart(this.assaultRifleData, '.chart');
+      this.barChartService.createBarChart(this.assaultRifleData, '.bar-chart-data-kills')
     });
   }
   private createLegend(data: any[]) {
@@ -224,67 +229,4 @@ export class AppComponent implements OnInit {
       .style("alignment-baseline", "middle")
   }
 
-  private createChart(data: any[]) {
-    const element = d3.select('.chart');
-    const svg = element.append('svg')
-      .attr('width', 1500)
-      .attr('height', 500);
-
-    const color = d3.scaleOrdinal()
-      .domain(data)
-      .range(d3.schemeSet2);
-
-    const margin = {
-      top: 20,
-      right: 20,
-      bottom: 30,
-      left: 40
-    };
-    const width = +svg.attr('width') - margin.left - margin.right;
-    const height = +svg.attr('height') - margin.top - margin.bottom;
-
-    const g = svg.append('g')
-      .attr('transform', `translate(${margin.left},${margin.top})`);
-    const x = d3.scaleBand()
-      .rangeRound([0, width])
-      .padding(0.2)
-    const y = d3.scaleLinear()
-      .rangeRound([height, 0]);
-
-    x.domain(data.map(d => d.name));
-    y.domain([0, d3.max(data, d => d.value)]);
-
-    g.append('g')
-      .attr('class', 'axis axis--x')
-      .attr('transform', `translate(0,${height})`)
-      .call(d3.axisBottom(x))
-
-
-    g.append('g')
-      .attr('class', 'axis axis--y')
-      .call(d3.axisLeft(y))
-      .append('text')
-      .attr('transform', 'rotate(-90)')
-      .attr('y', 5)
-      .attr('dy', '1.71em')
-      .attr('text-anchor', 'end')
-      .text('Value')
-
-    g.selectAll('.bar')
-      .data(data)
-      .enter().append('rect')
-      .attr('class', 'bar')
-      .attr('x', d => x(d.name))
-      .attr('y', d => y(d.value))//@ts-ignore
-      .attr("fill", "white")
-      .attr("opacity", 0.5)//@ts-ignore
-      .style("fill", function(d){ return color(d)})
-      .attr('width', x.bandwidth())
-      .text('lolololol')
-      .attr('height', d => height - y(d.value))
-      .attr('title', d => d.value)
-      .on('mouseover', function() {
-      d3.select(this).style('cursor', 'pointer')
-    })
-  }
 };
