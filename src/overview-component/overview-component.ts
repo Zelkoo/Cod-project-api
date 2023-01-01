@@ -2,7 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DataService} from "../data.service";
 import {forkJoin, Subscription} from "rxjs";
 import {OverviewDataType} from "../helpers/overview-enum";
-
+import * as d3 from 'd3';
+import {AppComponent} from "../app/app.component";
 @Component({
   selector: 'overview-component',
   templateUrl: './overview-component.html',
@@ -25,9 +26,11 @@ export class OverviewComponent implements OnInit, OnDestroy {
   timePlayedTotal: any
   totalGamesPlayed: any
   winLossRatio: any
-  constructor(private readonly dataService: DataService) {
+  constructor(private readonly dataService: DataService, public app: AppComponent) {
   }
+
   ngOnInit() {
+    this.app.loadAssaultRifleData()
     this.subscription = forkJoin([
       this.dataService.getOverviewData(OverviewDataType.ScorePerMinute),
       this.dataService.getOverviewData(OverviewDataType.ScorePerGame),
@@ -64,5 +67,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    const svg = d3.select('svg');
+    svg.remove();
   }
 };
