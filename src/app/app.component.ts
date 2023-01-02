@@ -3,7 +3,7 @@ import { DataService } from 'src/data.service';
 import * as d3 from 'd3';
 import {forkJoin} from "rxjs";
 import {BarChartService} from "../bar-chart-service/bar-chart.service";
-
+import * as assets from '@callofduty/assets'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -29,6 +29,10 @@ export class AppComponent implements OnInit {
 
   }
   ngOnInit() {
+
+
+    console.log(assets.MW.Weapon('iw8_sh_romeo870'))
+    console.log(assets.MW.Weapon('iw8_pi_mike9'))
     const meleeData: any = {}
     const marksmanData: any = {}
     const pkmData: any = {}
@@ -194,39 +198,8 @@ export class AppComponent implements OnInit {
 
       this.assaultRifleData = Object.entries(rifleData).map(([name, value]) => ({ name, value }));
       this.assaultRifleData.sort((a, b) => b.value - a.value);
-      // this.createChart(this.assaultRifleData, '.chart');
       this.barChartService.createBarChart(this.assaultRifleData, '.bar-chart-data-kills')
     });
-  }
-  private createLegend(data: any[]) {
-    const Svg = d3.select("#my_dataviz2")
-
-    const color = d3.scaleOrdinal()
-      .domain(data)
-      .range(d3.schemeSet2);
-
-    Svg.selectAll("mydots")
-      .data(data)
-      .enter()
-      .append("circle")
-      .attr("cx", 100)
-      .attr("cy", function(d,i){ return 100 + i*25})
-      //@ts-ignore
-      .attr("r", 7)
-      //@ts-ignore
-      .style("fill", function(d){ return color(d)})
-
-    Svg.selectAll("mylabels")
-      .data(data)
-      .enter()
-      .append("text")
-      .attr("x", 120)
-      .attr("y", function(d,i){ return 100 + i*25}) //
-      //@ts-ignore
-      .style("fill", function(d){ return color(d)})
-      .text(function(d){ return d})
-      .attr("text-anchor", "left")
-      .style("alignment-baseline", "middle")
   }
 
 };

@@ -2,7 +2,7 @@
   color: white;
 }
 
-.back-button{
+.navigate-overview-button{
   appearance: none;
   background-color: #FAFBFC;
   border: 1px solid rgba(27, 31, 35, 0.15);
@@ -27,30 +27,30 @@
   white-space: nowrap;
   word-wrap: break-word;
 }
-.back-button:hover {
+.navigate-overview-button:hover {
   background-color: #30c730;
   text-decoration: none;
   transition-duration: 0.1s;
 }
 
-.back-button:disabled {
+.navigate-overview-button:disabled {
   background-color: #FAFBFC;
   border-color: rgba(27, 31, 35, 0.15);
   color: #959DA5;
   cursor: default;
 }
 
-.back-button:active {
+.navigate-overview-button:active {
   background-color: #EDEFF2;
   box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
   transition: none 0s;
 }
 
-.back-button:focus {
+.navigate-overview-button:focus {
   outline: 1px transparent;
 }
 
-.back-button:before {
+.navigate-overview-button:before {
   display: none;
 }
 
@@ -60,21 +60,19 @@
 
 .weapon-container {
   display: flex;
-  border:2px solid #20263e;;
-  width: 38%;
+  border:2px solid #20263e;
+  width: 40%;
   height: 90%;
   position: absolute;
   top: 80px;
   left: 60px;
   flex-direction: column;
+  background: #00000069;
+  border-radius: 10px;
 }
 .title{
   border-bottom:2px solid #20263e;
-  margin: 0;
-  height: 10%;
   display: flex;
-  position: relative;
-  align-self: flex-start;
   align-items: center;
   gap: 20px;
   padding-left: 25px
@@ -89,7 +87,6 @@
   justify-content: space-evenly;
   height: 70px;
   border-bottom:2px solid #20263e;
-  align-items: center;
   position: relative;
   text-align: center;
   line-height: 5px;
@@ -99,7 +96,6 @@
   justify-content: space-evenly;
   height: 70px;
   border-bottom:2px solid #20263e;
-  align-items: center;
   position: relative;
   text-align: center;
   line-height: 5px;
@@ -116,7 +112,7 @@
 .square {
   width: 300px;
   height: 410px;
-  border:2px solid #20263e;
+  border: 1px solid #20263e;
 }
 
 .rekord{
@@ -129,6 +125,52 @@
   border: 1px #20263e solid;
   height: 130px;
 }
-body{
-
+.container-best-weapon {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+  right: 0;
+  border: 2px solid #20263e;
+  background: #00000069;
+  margin-right: 60px;
+  top: 82px;
+  border-radius: 11px;
 }
+.top {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+.buttons {
+  padding: 5px;
+  margin-left: auto;
+}
+.best-weapons {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 10px;
+  border: 1px solid #20263e;
+}
+.images {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 10px;
+  margin: 5px
+}
+.images img {
+  width: 280px;
+  height: 140px;
+  margin-right: 10px;
+  border: 1px solid #20263e;
+}
+.stats {
+  display: none;
+}
+.container-best-weapon:hover .stats {
+  display: block;
+  margin-top: 10px;
+}
+
