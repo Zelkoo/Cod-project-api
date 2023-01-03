@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { DataService } from "../data.service";
 import { HttpClientModule } from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
-import {MenuNavigationComponent} from "../menu/menu-component";
 import {RouterModule, Routes} from "@angular/router";
 import {MatchComponent} from "../match-component/match-component";
 import {WeaponsComponent} from "../weapons-component/weapons-component";
@@ -21,7 +20,6 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    MenuNavigationComponent,
     MatchComponent,
     WeaponsComponent,
     OverviewComponent,
