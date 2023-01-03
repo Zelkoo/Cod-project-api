@@ -15,13 +15,13 @@ export class BarChartService {
       .attr('width', 1000)
       .attr('height', 500);
 
-
     const margin = {
       top: 20,
       right: 20,
       bottom: 30,
       left: 40
     };
+
     const width = +svg.attr('width') - margin.left - margin.right;
     const height = +svg.attr('height') - margin.top - margin.bottom;
     const colorsPalete = ['#f44336', '#e81e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4caf50', '#8bc34a', '#cddc39', '#ffeb3b', '#ffc107', '#ff9800'];
@@ -66,7 +66,6 @@ export class BarChartService {
           selected = false;
         } else {
           d3.select(this).attr("stroke-width", "4px").attr("stroke", "black");
-          d3.select("#text-box").style("display", "block").text("Zaznaczono słupek");
           selected = true;
         }
       })
@@ -77,7 +76,7 @@ export class BarChartService {
       .attr("opacity", 0.8)
       .style("fill", (d: any, i: number) => colorsPalete[i])
       .attr('width', x.bandwidth())
-      .attr('height', d => height - y(d.value))
+      .attr('height', (d: any) => height - y(d.value))
       .attr('title', d => d.value)
       .on('mouseover', function() {
         d3.select(this).style('cursor', 'pointer')

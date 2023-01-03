@@ -1,8 +1,9 @@
+<router-outlet ></router-outlet>
+<div *ngIf="router.url === '/overview-component'">
+  <div class="bar-chart-data-kills" ></div>
+  <select *ngIf="router.url === '/overview-component'" [(ngModel)]="selectedOption"  (change)="loadAssaultRifleData()" class="drop-down-data-options">
 
-<nav-menu class="bg"></nav-menu>
-<router-outlet></router-outlet>
-<!--<input type="text" [(ngModel)]="inputValue">-->
-<!--  <button (click)="loadAssaultRifleData()">Get new data</button>-->
-<div class="bar-chart-data-kills"></div>
-
+    <option *ngFor="let option of options" [ngValue]="option">{{option}}</option>
+  </select>
+</div>
 
