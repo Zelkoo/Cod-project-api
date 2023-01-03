@@ -104,4 +104,9 @@ export class BarChartService {
       .attr('font-size', '20px')
       .text((d: any) => d.name);
   }
+  public refreshBarChart(data: { name: string, value: number }[], el: string) {
+    d3.select(el).selectAll("*").remove();
+    this.createBarChart(data, el);
+  }
+
 }
