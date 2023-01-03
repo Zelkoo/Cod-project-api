@@ -67,7 +67,7 @@
   top: 80px;
   left: 60px;
   flex-direction: column;
-  background: #00000069;
+  background: #0b0a0ae6;
   border-radius: 10px;
 }
 .title{
@@ -132,7 +132,7 @@
   position: absolute;
   right: 0;
   border: 2px solid #20263e;
-  background: #00000069;
+  background: #0b0a0ae6;
   margin-right: 60px;
   top: 82px;
   border-radius: 11px;
@@ -141,6 +141,7 @@
   display: flex;
   align-items: flex-start;
   width: 100%;
+  left: 17px;
 }
 .buttons {
   padding: 5px;
@@ -173,4 +174,48 @@
   display: block;
   margin-top: 10px;
 }
-
+.container-best-map{
+  width: 978px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 2px solid #20263e;
+  background: #0b0a0ae6;
+  margin-right: 60px;
+  border-radius: 11px;
+  position: absolute;
+  bottom: 13px;
+  right: 0;
+  height: 400px;
+}
+.map-info {
+  position: relative;
+  align-self: center;
+  display: flex;
+  font-style: italic;
+  left: 20px;
+  color: #646464;
+}
+.last-game-container{
+  width: 450px;
+  height: 179px;
+  border: 1px solid;
+  left: 50px;
+  position: relative;
+}
+.green-line{
+  position: relative;
+  width: 198px;
+  transform: rotate(270deg);
+  bottom: 109px;
+  left: 50px;
+  z-index: 5555555;
+  border: #2ffa5b 1px solid;
+}
+.game-played{
+  width: 450px;
+  height: 179px;
+  border: 1px solid;
+  left: 50px;
+  position: relative;
+}
