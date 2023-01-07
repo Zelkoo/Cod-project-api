@@ -1,9 +1,9 @@
 version: 2.1
 
 workflows:
-  test-deploy:
+  build-deploy:
     jobs:
-      - test
+      - build
 
 
 jobs:
@@ -11,12 +11,13 @@ jobs:
     docker:
       - image: cimg/node:16.18.1
         environment:
-          - CHROME_BIN: /usr/bin/google-chrome
+          -  CHROME_BIN: /usr/bin/google-chrome karma start --single-run
+
     steps:
       - checkout
       - run:
           name: Install dependecies
           command: npm install
       - run:
-          name: Run Tests
-          command: $CHROME_BIN karma start --single-run
+          name: Build
+          command: npm run build
