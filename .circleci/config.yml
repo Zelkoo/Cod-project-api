@@ -9,6 +9,7 @@ jobs:
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - checkout
+      - run: npm install
       - run: echo "this is the build job"
   test:
     docker:
