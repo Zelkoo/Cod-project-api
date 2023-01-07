@@ -14,7 +14,7 @@ jobs:
       - checkout
       - run:
           name: Install dependecies
-          command: npm install
+          command: npm install && npm install @callofduty/assets
       - run:
           name: Build
           command: npm run build
