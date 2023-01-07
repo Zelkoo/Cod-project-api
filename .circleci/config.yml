@@ -11,7 +11,8 @@ jobs:
     docker:
       - image: cimg/node:16.18.1
         environment:
-          -  CHROME_BIN: CHROME_BIN=/usr/bin/google-chrome karma start --single-run
+          -  CHROME_BIN: /usr/bin/google-chrome karma start --single-run
+
     steps:
       - checkout
       - run:
