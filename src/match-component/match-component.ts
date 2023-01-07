@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 
-@Component({
+@Componen({
   selector: 'match-component',
   templateUrl: './match-component.html',
   styleUrls: ['./match-component.css'],
