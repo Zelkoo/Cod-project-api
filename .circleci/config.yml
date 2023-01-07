@@ -8,8 +8,15 @@ jobs:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
+      - run:
+          name: Install Node.js
+          command: |
+            curl -sL https://deb.nodesource.com/setup_14.x | bash -
+            apt-get install -y nodejs
+      - run:
+          name: Install npm dependencies
+          command: npm install
       - checkout
-      - run: npm install
       - run: echo "this is the build job"
   test:
     docker:
