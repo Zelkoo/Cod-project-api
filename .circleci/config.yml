@@ -2,6 +2,7 @@ version: 2.1
 # Define the jobs we want to run for this project
 jobs:
   build:
+    working_directory: /tmp
     docker:
       - image: node:14-stretch
         auth:
@@ -20,7 +21,9 @@ jobs:
             name: Install npm dependencies
             command: npm install
       - checkout
-      - run: echo "this is the build job"
+      - run:
+          name: Run ng build
+          command: ng build
   test:
     docker:
       - image: node:14-stretch
