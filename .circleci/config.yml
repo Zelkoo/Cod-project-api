@@ -9,7 +9,7 @@ jobs:
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - checkout
-      - run: echo "this is the build job"
+      - run: build
   test:
     docker:
       - image: cimg/base:stable
@@ -18,7 +18,7 @@ jobs:
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - checkout
-      - run: echo "this is the test job"
+      - run: test
 
 # Orchestrate our job run sequence
 workflows:
