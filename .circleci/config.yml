@@ -6,9 +6,7 @@ workflows:
       - build
       - test
 
-orbs:
-  browser-tools: circleci/browser-tools@1.4.0
-  
+
 jobs:
   build:
     docker:
@@ -24,10 +22,10 @@ jobs:
   test:
     docker:
       - image: cimg/node:16.19.0-browsers
+        environment:
+          - CHROME_BIN: /usr/bin/google-chrome
     steps:
       - checkout
       - run: npm install
-      - browser-tools/install-chrome:
-          channel: stable 
       - run:
           command: npm test
