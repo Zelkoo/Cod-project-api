@@ -4,7 +4,7 @@ jobs:
   build:
     working_directory: /tmp
     docker:
-      - image: node:14-stretch
+      - image: node:16-stretch
         auth:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
