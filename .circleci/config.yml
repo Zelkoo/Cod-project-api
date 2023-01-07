@@ -27,4 +27,4 @@ jobs:
       - run: npm install
       - run:
            name: Unit Test
-           command: ng test
+           command: npm run test
