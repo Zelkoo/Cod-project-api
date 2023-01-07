@@ -28,6 +28,6 @@ jobs:
       - run:
           command: npm test
       - run:
-            command: karma start ./karma.conf.js
-        environment:
-      - CHROME_BIN: /usr/bin/google-chrome
+          command: karma start ./karma.conf.js
+    environment:
+      CHROME_BIN: /usr/bin/google-chrome
