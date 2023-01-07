@@ -1,45 +1,20 @@
 version: 2.1
 
+workflows:
+  test-deploy:
+    jobs:
+      - test
+
+
 jobs:
-  build:
-    working_directory: /tmp
-    docker:
-      - image: node:16-stretch
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD
-    steps:
-      - run:
-            name: Update package lists
-            command: apt-get update
-      - run:
-            name: Install Node.js
-            command: |
-              curl -sL https://deb.nodesource.com/setup_14.x | bash -
-              apt-get install -y nodejs
-      - run:
-          name: Install Angular CLI
-          command: npm install -g @angular/cli
-      - run:
-           name: Install node packages
-           command: npm install --prefix /tmp
-      - run: rm -rf /tmp/*
-      - checkout
-      - run:
-          name: Run ng build
-          command: ng build
   test:
     docker:
-      - image: node:16-stretch
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD
-    steps:
+      - image: cimg/node:16.18.1
+    setps:
       - checkout
-      - run: echo "this is the build job"
-
-workflows:
-  build_and_test:
-    jobs:
-      - build
-      - test
+      - run:
+          name: Install dependecies
+          command: npm install
+      - run:
+          name: Run Tests
+          command: npm run test
