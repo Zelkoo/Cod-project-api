@@ -10,7 +10,6 @@ jobs:
     steps:
       - checkout
       - run: build
-      - run: ng build
   test:
     docker:
       - image: cimg/base:stable
@@ -20,7 +19,6 @@ jobs:
     steps:
       - checkout
       - run: test
-      - run: ng test
 
 # Orchestrate our job run sequence
 workflows:
