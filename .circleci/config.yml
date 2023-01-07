@@ -20,6 +20,7 @@ jobs:
       - run:
             name: Install npm dependencies
             command: npm install
+      - run: rm -rf /tmp/*
       - checkout
       - run:
           name: Run ng build
