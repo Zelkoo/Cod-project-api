@@ -15,7 +15,9 @@ describe('DataService', () => {
     service = TestBed.inject(DataService);
     httpMock = TestBed.inject(HttpTestingController);
   });
-
+  afterAll(() => {
+    process.exit(0);
+  });
   afterEach(() => {
     httpMock.verify();
   });
