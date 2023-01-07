@@ -24,11 +24,7 @@ jobs:
       - image: cimg/node:16.19.0-browsers
     steps:
       - checkout
-      - run:
-            name: Set CHROME_BIN
-            command: |
-              echo "CHROME_BIN=$(which google-chrome-stable)" >> $BASH_ENV
       - run: npm install
       - run:
            name: Unit Test
-           command: npm run test
+           command: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
