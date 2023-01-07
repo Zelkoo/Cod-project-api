@@ -22,6 +22,8 @@ jobs:
   test:
     docker:
       - image: cimg/node:16.19.0-browsers
+        environment:
+          - CHROME_BIN=/usr/bin/google-chrome
     steps:
       - checkout
       - run: npm install
@@ -29,5 +31,3 @@ jobs:
           command: npm test
       - run:
           command: karma start ./karma.conf.js
-    environment:
-      CHROME_BIN: /usr/bin/google-chrome
