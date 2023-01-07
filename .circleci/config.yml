@@ -3,36 +3,27 @@ version: 2.1
 jobs:
   build_and_test:
     docker:
-      - image: cimg/base:stable
+      - image: cimg/node:16.11.1
     steps:
       - checkout
+      # look for existing cache and restore if found
+      - restore_cache:
+          key:
+          - v1-deps-{{ checksum "package-lock.json" }}
+          - v1-deps-
       # install dependencies
       - run:
           name: install dependencies
           command: npm install
-  build:
-    docker:
-      - image: cimg/base:stable
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
-    steps:
+      # save any changes to the cache
+      - save_cache:
+          key: v1-deps-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      # run test suite
       - run:
-          name: Check Scripts
-          command: |
-            build
-  test:
-    docker:
-      - image: cimg/base:stable
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
-    steps:
-      - run:
-          name: Check Scripts
-          command: |
-            test
-
+          name: test
+          command: npm run test
 # Orchestrate our job run sequence
 workflows:
   build_and_test:
