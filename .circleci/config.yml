@@ -1,5 +1,5 @@
 version: 2.1
-# Define the jobs we want to run for this project
+
 jobs:
   build:
     working_directory: /tmp
@@ -7,7 +7,7 @@ jobs:
       - image: node:16-stretch
         auth:
           username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+          password: $DOCKERHUB_PASSWORD
     steps:
       - run:
             name: Update package lists
@@ -22,7 +22,7 @@ jobs:
           command: npm install -g @angular/cli
       - run:
            name: Install node packages
-           command: npm install
+           command: npm install npm install --prefix /tmp
       - run: rm -rf /tmp/*
       - checkout
       - run:
@@ -30,15 +30,14 @@ jobs:
           command: ng build
   test:
     docker:
-      - image: node:14-stretch
+      - image: node:16-stretch
         auth:
           username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - run: echo "this is the build job"
 
-# Orchestrate our job run sequence
 workflows:
   build_and_test:
     jobs:
