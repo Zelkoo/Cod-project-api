@@ -22,7 +22,7 @@ jobs:
           command: npm install -g @angular/cli
       - run:
            name: Install node packages
-           command: npm install npm install --prefix /tmp
+           command: npm install --prefix /tmp
       - run: rm -rf /tmp/*
       - checkout
       - run:
