@@ -24,7 +24,7 @@ jobs:
       - image: cimg/node:16.19.0-browsers
     steps:
       - checkout
-      - run: npm install && npm install karma-chrome-launcher
+      - run: npm install
       - run:
            name: Unit Test
            command: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
