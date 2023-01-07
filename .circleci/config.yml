@@ -18,6 +18,9 @@ jobs:
               curl -sL https://deb.nodesource.com/setup_14.x | bash -
               apt-get install -y nodejs
       - run:
+          name: Install Angular CLI
+          command: npm install -g @angular/cli
+      - run:
             name: Install npm dependencies
             command: npm install
       - run: rm -rf /tmp/*
