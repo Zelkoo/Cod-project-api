@@ -5,7 +5,9 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 describe('DataService', () => {
   let service: DataService;
   let httpMock: HttpTestingController;
-
+  afterAll(() => {
+    TestBed.resetTestingModule();
+  });
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
@@ -14,9 +16,6 @@ describe('DataService', () => {
 
     service = TestBed.inject(DataService);
     httpMock = TestBed.inject(HttpTestingController);
-  });
-  afterAll(() => {
-    process.exit(0);
   });
   afterEach(() => {
     httpMock.verify();
