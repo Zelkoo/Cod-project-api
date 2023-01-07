@@ -10,14 +10,16 @@ executors:
           password: $DOCKER_HUB_PASSWORD
 jobs:
   unit-test:
-
-    executor: my-custom-executor
+    executor: build_and_test
     steps:
       - checkout
       - run: |
           # echo Hello, World!
 
 workflows:
-  my-custom-workflow:
+  build_and_test:
     jobs:
-      - test
+      - build
+      - test:
+          requires:
+            - build
