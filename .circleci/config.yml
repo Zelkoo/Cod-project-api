@@ -19,5 +19,4 @@ jobs:
           command: npm install
       - run:
           name: Run Tests
-          command:
-          CHROME_BIN: $CHROME_BIN karma start --single-run
+          command: $CHROME_BIN karma start --single-run
