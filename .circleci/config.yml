@@ -1,18 +1,6 @@
 version: 2.1
 # Define the jobs we want to run for this project
-
 jobs:
-  install_dependencies:
-    docker:
-      - image: cimg/base:stable
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
-    steps:
-      - run:
-          name: Install Dependencies
-          command: |
-            npm install
   build:
     docker:
       - image: cimg/base:stable
@@ -31,13 +19,11 @@ jobs:
     steps:
       - run:
           name: Check Scripts
-          command: |
-            test
+          run: test
 
 # Orchestrate our job run sequence
 workflows:
   build_and_test:
     jobs:
-      - install_dependencies
       - build
       - test
