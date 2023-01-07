@@ -21,7 +21,7 @@ jobs:
           command: npm run build
   test:
     docker:
-      - image: node:16.18.1-browsers
+      - image: cimg/node:16.19.0-browsers
     steps:
       - checkout
       - run: npm install
