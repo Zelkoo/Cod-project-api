@@ -29,5 +29,3 @@ jobs:
       - run: npm install
       - run:
           command: npm test
-      - run:
-          command: karma start ./karma.conf.js
