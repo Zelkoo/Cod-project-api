@@ -11,8 +11,7 @@ jobs:
     docker:
       - image: cimg/node:16.18.1
         environment:
-          -  CHROME_BIN: /usr/bin/google-chrome karma start --single-run
-
+          - CHROME_BIN: /usr/bin/google-chrome
     steps:
       - checkout
       - run:
@@ -20,4 +19,5 @@ jobs:
           command: npm install
       - run:
           name: Run Tests
-          command: npm run test
+          command:
+          CHROME_BIN: $CHROME_BIN karma start --single-run
