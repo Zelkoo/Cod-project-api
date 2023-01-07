@@ -1,28 +1,20 @@
 version: 2.1
-# Define the jobs we want to run for this project
+
+workflows:
+  build-deploy:
+    jobs:
+      - build
+
+
 jobs:
   build:
     docker:
-      - image: cimg/base:stable
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+      - image: cimg/node:16.18.1
     steps:
       - checkout
-      - run: echo "this is the build job"
-  test:
-    docker:
-      - image: cimg/base:stable
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
-    steps:
-      - checkout
-      - run: echo "this is the build job"
-
-# Orchestrate our job run sequence
-workflows:
-  build_and_test:
-    jobs:
-      - build
-      - test
+      - run:
+          name: Install dependecies
+          command: npm install && npm install @callofduty/assets
+      - run:
+          name: Build
+          command: npm run build
