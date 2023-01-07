@@ -8,6 +8,9 @@ jobs:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
+      - run:
+            name: Install npm dependencies
+            command: npm install
       - checkout
       - run: echo "this is the build job"
   test:
