@@ -10,6 +10,7 @@ jobs:
     steps:
       - checkout
       - run: build
+      - run: ng build
   test:
     docker:
       - image: cimg/base:stable
@@ -17,9 +18,9 @@ jobs:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
-      - run:
-          name: Check Scripts
-          run: test
+      - checkout
+      - run: test
+      - run: ng test
 
 # Orchestrate our job run sequence
 workflows:
