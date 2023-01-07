@@ -31,12 +31,6 @@ module.exports = function (config) {
         { type: 'html' },
         { type: 'text-summary' }
       ]
-    },
-    reporters: ['junit'],
-    junitReporter: {
-      outputDir: process.env.JUNIT_REPORT_PATH,
-      outputFile: process.env.JUNIT_REPORT_NAME,
-      useBrowserName: false
   },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
