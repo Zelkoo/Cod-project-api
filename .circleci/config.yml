@@ -1,9 +1,10 @@
 version: 2.1
 
 workflows:
-  build-deploy:
+  build-and-test:
     jobs:
       - build
+      - test
 
 
 jobs:
@@ -18,3 +19,11 @@ jobs:
       - run:
           name: Build
           command: npm run build
+  test:
+    docker:
+      - image: node:16.19.0-browsers
+    steps:
+      - checkout
+      - run:
+          name: Unit Test
+          command: npm run test
