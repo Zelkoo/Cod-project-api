@@ -4,14 +4,14 @@ export const mockAssaaultRifleData = {
       weapon_assault_rifle: {
         iw8_ar_akilo47: {
           properties: {
-            damage: '50',
-            range: '60'
+            hits: 500,
+            kills: 160
           }
         },
         iw8_ar_anovember94: {
           properties: {
-            damage: '40',
-            range: '70'
+            damage: 40,
+            range: 70
           }
         }
       }
@@ -19,6 +19,26 @@ export const mockAssaaultRifleData = {
   }
 };
 
+export const mockShotgunData = {
+  lifetime: {
+    itemData: {
+      weapon_shotgun: {
+        iw8_sh_romeo870: {
+          properties: {
+            hits: 500,
+            kills: 160
+          }
+        },
+        iw8_sh_dpapa12: {
+          properties: {
+            hits: 546,
+            kills: 659
+          }
+        }
+      }
+    }
+  }
+};
 export const mockFetchData = [
   {
     id: 1,

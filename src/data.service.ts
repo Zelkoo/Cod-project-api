@@ -182,6 +182,7 @@ getOverviewData(prop: any): Observable<any> {
     );
   }
   getShotgunRifleData(weaponName: string, properties: string): Observable<any> {
+    let weapons: any
     return this.fetchData().pipe(
       map((data: any) => {
         const fullData = data

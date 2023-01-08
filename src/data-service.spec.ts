@@ -1,9 +1,9 @@
 import { DataService } from './data.service';
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import {mockAssaaultRifleData, mockFetchData} from "./helpers/mock-data";
+import {mockAssaaultRifleData, mockFetchData, mockShotgunData} from "./helpers/mock-data";
 
-describe('DataService', () => {
+describe('Tests for DataService', () => {
   let service: DataService;
   let httpMock: HttpTestingController;
   afterAll(() => {
@@ -29,7 +29,7 @@ describe('DataService', () => {
     req.flush(mockData);
   }
 
-  it('should fetch data from the JSON file', () => {
+  it('Should fetch data from the JSON file', () => {
 
     service.fetchData().subscribe(data => {
       console.log(data)
@@ -37,12 +37,21 @@ describe('DataService', () => {
     });
     setup(mockFetchData)
   });
-  it('Test properties', () => {
+  it('AssaultRifle test properties', () => {
 
-    service.getAssaultRifleData('ak47', 'damage').subscribe(data => {
-      expect(data).toEqual('50');
+    service.getAssaultRifleData('ak47', 'hits').subscribe(data => {
+      console.log(data)
+      expect(data).toEqual(500);
     });
 
     setup(mockAssaaultRifleData)
+  })
+  it('Shoutgun test properties', () => {
+
+    service.getShotgunRifleData('model1680', 'kills').subscribe(data => {
+      console.log(data)
+      expect(data).toEqual(160)
+    })
+    setup(mockShotgunData)
   })
 });
