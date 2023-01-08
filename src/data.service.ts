@@ -359,14 +359,14 @@ export class DataService {
       map((data: PistolData
       ) => {
         const fullData = data
-        const pistol = fullData.lifetime.itemData.weapon_pistol
+        const pistol = fullData.lifetime.itemData?.weapon_pistol
         const weapons: any = {
-          _357: this._357 = pistol.iw8_pi_cpapa.properties,
-          renetti: this.renetti = pistol.iw8_pi_mike9.properties,
-          _1911: this._1911 = pistol.iw8_pi_mike1911.properties,
-          x16: this.x16 = pistol.iw8_pi_golf21.properties,
-          _50gs: this._50gs = pistol.iw8_pi_decho.properties,
-          m19: this.m19 = pistol.iw8_pi_papa320.properties,
+          _357: this._357 = pistol.iw8_pi_cpapa?.properties,
+          renetti: this.renetti = pistol.iw8_pi_mike9?.properties,
+          _1911: this._1911 = pistol.iw8_pi_mike1911?.properties,
+          x16: this.x16 = pistol.iw8_pi_golf21?.properties,
+          _50gs: this._50gs = pistol.iw8_pi_decho?.properties,
+          m19: this.m19 = pistol.iw8_pi_papa320?.properties,
         };
         return weapons[weaponName][properties];
       })
