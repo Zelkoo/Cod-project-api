@@ -3,6 +3,7 @@ import {DataService} from "../data.service";
 import {DonutChartService} from "../pie-chart-service/donut-chart-service";
 import {forkJoin, Subscription} from "rxjs";
 import {OverviewDataType} from "../helpers/overview-enum";
+import {PistolData} from "../helpers/data-interface";
 
 
 @Component({
@@ -13,6 +14,8 @@ import {OverviewDataType} from "../helpers/overview-enum";
 
 export class WeaponsComponent implements OnInit {
   private subscription: Subscription;
+  pistol: PistolData
+  rocket: string
   deaths: number;
   kills: number;
   wins: number;
@@ -23,6 +26,11 @@ export class WeaponsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dataService.getPistolData('renetti', 'kills').subscribe((data: PistolData) => {
+      console.log(data)
+        this.pistol = data
+    }
+    )
     this.subscription = forkJoin([
       this.dataService.getOverviewData(OverviewDataType.Wins),
       this.dataService.getOverviewData(OverviewDataType.Kills),
