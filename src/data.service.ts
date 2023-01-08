@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {map, Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {PistolData} from "./helpers/data-interface";
 @Injectable({
   providedIn: 'any'
 })
@@ -354,11 +355,11 @@ export class DataService {
     );
   }
   getPistolData(weaponName: string, properties: string): Observable<any> {
-    let weapons: any
     return this.fetchData().pipe(
-      map((data: any) => {
+      map((data: PistolData
+      ) => {
         const fullData = data
-        const pistol = fullData.lifetime.itemData.weapon_pistol
+        const pistol = fullData.lifetime.itemData?.weapon_pistol
         const weapons: any = {
           _357: this._357 = pistol.iw8_pi_cpapa?.properties,
           renetti: this.renetti = pistol.iw8_pi_mike9?.properties,
