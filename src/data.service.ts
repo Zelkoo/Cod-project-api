@@ -149,7 +149,7 @@ export class DataService {
   public fetchData(): Observable<any> {
     return this.http.get('./assets/cod-data.json');
   }
-getOverviewData(prop: any): Observable<any> {
+  getOverviewData(prop: any): Observable<any> {
     return this.fetchData().pipe(map((data: any) => {
       const fullData = data
       const propertiesData = fullData.lifetime.all.properties
@@ -182,6 +182,7 @@ getOverviewData(prop: any): Observable<any> {
     );
   }
   getShotgunRifleData(weaponName: string, properties: string): Observable<any> {
+    let weapons: any
     return this.fetchData().pipe(
       map((data: any) => {
         const fullData = data
@@ -199,6 +200,7 @@ getOverviewData(prop: any): Observable<any> {
     );
   }
   getMarksmanRifleData(weaponName: string, properties: string): Observable<any> {
+    let weapons: any
     return this.fetchData().pipe(
       map((data: any) => {
         const fullData = data
@@ -216,6 +218,7 @@ getOverviewData(prop: any): Observable<any> {
     );
   }
   getLargeMachineGunqData(weaponName: string, properties: string): Observable<any> {
+    let weapons: any
     return this.fetchData().pipe(
       map((data: any) => {
         const fullData = data
@@ -235,6 +238,7 @@ getOverviewData(prop: any): Observable<any> {
     );
   }
   getSniperRifleData(weaponName: string, properties: string): Observable<any> {
+    let weapons: any
     return this.fetchData().pipe(
       map((data: any) => {
         const fullData = data
@@ -270,6 +274,7 @@ getOverviewData(prop: any): Observable<any> {
     );
   }
   getTacticalEqData(weaponName: string, properties: string): Observable<any> {
+    let weapons: any
     return this.fetchData().pipe(
       map((data: any) => {
         const fullData = data
@@ -296,6 +301,7 @@ getOverviewData(prop: any): Observable<any> {
     );
   }
   getKillsStreakData(weaponName: string, properties: string): Observable<any> {
+    let weapons: any
     return this.fetchData().pipe(
       map((data: any) => {
         const fullData = data
@@ -325,6 +331,7 @@ getOverviewData(prop: any): Observable<any> {
     );
   }
   getFieldUpgradesData(weaponName: string, properties: string): Observable<any> {
+    let weapons: any
     return this.fetchData().pipe(
       map((data: any) => {
         const fullData = data
@@ -346,7 +353,8 @@ getOverviewData(prop: any): Observable<any> {
       })
     );
   }
-  getPistolData(weaponName: string, properties: string): Observable<any> {{
+  getPistolData(weaponName: string, properties: string): Observable<any> {
+    let weapons: any
     return this.fetchData().pipe(
       map((data: any) => {
         const fullData = data
@@ -364,34 +372,40 @@ getOverviewData(prop: any): Observable<any> {
     );
   }
 
-  // getRocketLuncherData(weaponName: string, properties: string) {
-  //     return this.fetchData().pipe(
-  //       map((data: any) => {
-  //         const fullData = data
-  //         const rocketLuncher = fullData.lifetime.itemData.weapon_launcher
-  //         const weapons: any = {
-  //           pila: this.pila = rocketLuncher.iw8_la_gromeo,
-  //           rpg7: this.rpg7 = rocketLuncher.iw8_la_rpapa7,
-  //           joker: this.joker = rocketLuncher.iw8_la_juliet,
-  //           sterlap: this.sterlap = rocketLuncher.iw8_la_kgolf,
-  //         };
-  //         return weapons[weaponName][properties];
-  //       })
-  //     );
-  //  }
-   // getMeleeWeaponData(weaponName: string, properties: string) {
-   //   this.fetchData().subscribe((data) => {
-   //     const fullData = data.data
-   //     const shield = fullData.lifetime.itemData.weapon_other
-   //     const meleeWeapon = fullData.lifetime.itemData.weapon_melee
-   //     const weapons: any = {
-   //       knife: this.knife = meleeWeapon.iw8_knife,
-   //       akimboBlades: this.akimboBlades = meleeWeapon.iw8_me_akimboblades,
-   //       akimboBlunt: this.akimboBlunt = meleeWeapon.iw8_me_akimboblunt,
-   //       shield: this.shield = shield.iw8_me_riotshield,
-   //     };
-   //     return weapons[weaponName][properties];
-   //   })
+  getRocketLuncherData(weaponName: string, properties: string): Observable<any> {
+    let weapons: any
+      return this.fetchData().pipe(
+        map((data: any) => {
+          const fullData = data
+          const rocketLuncher = fullData.lifetime.itemData.weapon_launcher
+          const weapons: any = {
+            pila: this.pila = rocketLuncher.iw8_la_gromeo?.properties,
+            rpg7: this.rpg7 = rocketLuncher.iw8_la_rpapa7?.properties,
+            joker: this.joker = rocketLuncher.iw8_la_juliet?.properties,
+            sterlap: this.sterlap = rocketLuncher.iw8_la_kgolf?.properties,
+          };
+          return weapons[weaponName][properties];
+        })
+      );
+   }
+
+   getMeleeWeaponData(weaponName: string, properties: string): Observable<any> {
+    let weapons: any
+     return this.fetchData().pipe(
+       map((data: any) => {
+         const fullData = data
+         const shield = fullData.lifetime.itemData.weapon_other
+         const meleeWeapon = fullData.lifetime.itemData.weapon_melee
+         const weapons: any = {
+           knife: this.knife = meleeWeapon.iw8_knife?.properties,
+           akimboBlades: this.akimboBlades = meleeWeapon.iw8_me_akimboblades?.properties,
+           akimboBlunt: this.akimboBlunt = meleeWeapon.iw8_me_akimboblunt?.properties,
+           shield: this.shield = shield.iw8_me_riotshield?.properties,
+         };
+         return weapons[weaponName][properties];
+       })
+     );
+   }
    // }
   //  getGameInfoData(weaponName: string, properties: string) {
   //    this.fetchData().subscribe((data) => {
@@ -410,5 +424,4 @@ getOverviewData(prop: any): Observable<any> {
   //      };
   //      return weapons[weaponName][properties];
   //    })
-  }
 }
