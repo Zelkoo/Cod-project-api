@@ -393,7 +393,7 @@ export class DataService {
     let weapons: any
      return this.fetchData().pipe(
        map((data: any) => {
-         const fullData = data.data
+         const fullData = data
          const shield = fullData.lifetime.itemData.weapon_other
          const meleeWeapon = fullData.lifetime.itemData.weapon_melee
          const weapons: any = {
