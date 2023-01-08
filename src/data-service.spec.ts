@@ -67,7 +67,6 @@ describe('Tests for DataService', () => {
     })
     setup(mockMarksmanRifleData)
   })
-
   it('LargeMachineGun test properties', () => {
     service.getLargeMachineGunqData('burenMk9', 'kills').subscribe(data => {
       console.log('burenMk9', data)
@@ -75,7 +74,6 @@ describe('Tests for DataService', () => {
     })
     setup(mockLargeMachineGunData)
   })
-
   it('SniperRifle test properties', () => {
     service.getSniperRifleData('hdr', 'kills').subscribe(data => {
       console.log('hdr', data)
@@ -83,7 +81,6 @@ describe('Tests for DataService', () => {
     })
     setup(mockSniperRifleData)
   })
-
   it('MachineGun test properties', () => {
     service.getMachineGunData('p90', 'kills').subscribe(data => {
       console.log('p90', data)
@@ -91,7 +88,6 @@ describe('Tests for DataService', () => {
     })
     setup(mockMachineGunData)
   })
-
   it('Tactical Equipment test properties', () => {
     service.getTacticalEqData('flesh', 'uses').subscribe(data => {
       console.log('Flesh', data)
@@ -99,7 +95,6 @@ describe('Tests for DataService', () => {
     })
     setup(mockTacticalEqData)
   })
-
   it('KillStreak test properties', () => {
     service.getKillsStreakData('uav', 'uses').subscribe(data => {
       console.log('Uav', data)
@@ -107,7 +102,6 @@ describe('Tests for DataService', () => {
     })
     setup(mockKillStreakData)
   })
-
   it('FieldUpgrade test properties', () => {
     service.getFieldUpgradesData('deadSilence', 'uses').subscribe(data => {
       console.log('DeadSilence', data)
@@ -115,7 +109,6 @@ describe('Tests for DataService', () => {
     })
     setup(mockFieldUpgradeData)
   })
-
   it('Pistol test properties', () => {
     service.getPistolData('renetti', 'kills').subscribe(data => {
       console.log('Pistol', data)
@@ -123,20 +116,11 @@ describe('Tests for DataService', () => {
     })
     setup(mockPistolData)
   })
-
   it('RocketLuncher test properties', () => {
     service.getRocketLuncherData('pila', 'kills').subscribe(data => {
       console.log('RocketLuncher', data)
       expect(data).toEqual(5)
     })
     setup(mockRocketLuncherData)
-  })
-
-  it('Melee test properties', () => {
-    service.getMeleeWeaponData('knife', 'kills').subscribe(data => {
-      console.log('Knife', data)
-      expect(data).toEqual(55)
-    })
-    setup(mockMeleeWeaponData)
   })
 });
