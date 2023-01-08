@@ -5,15 +5,9 @@ export const mockAssaaultRifleData = {
         iw8_ar_akilo47: {
           properties: {
             hits: 500,
-            kills: 160
+            kills: 123
           }
         },
-        iw8_ar_anovember94: {
-          properties: {
-            damage: 40,
-            range: 70
-          }
-        }
       }
     }
   }
@@ -26,15 +20,108 @@ export const mockShotgunData = {
         iw8_sh_romeo870: {
           properties: {
             hits: 500,
-            kills: 160
+            kills: 741
           }
         },
-        iw8_sh_dpapa12: {
+      }
+    }
+  }
+};
+export const mockMarksmanRifleData = {
+  lifetime: {
+    itemData: {
+      weapon_marksman: {
+        iw8_sn_sbeta: {
           properties: {
-            hits: 546,
-            kills: 659
+            hits: 500,
+            kills: 932
           }
-        }
+        },
+      }
+    }
+  }
+};
+export const mockLargeMachineGunData = {
+  lifetime: {
+    itemData: {
+      weapon_lmg: {
+        iw8_lm_mkilo3: {
+          properties: {
+            hits: 500,
+            kills: 845
+          }
+        },
+      }
+    }
+  }
+};
+export const mockSniperRifleData = {
+  lifetime: {
+    itemData: {
+      weapon_sniper: {
+        iw8_sn_hdromeo: {
+          properties: {
+            hits: 160,
+            kills: 155
+          }
+        },
+      }
+    }
+  }
+};
+export const mockMachineGunData = {
+  lifetime: {
+    itemData: {
+      weapon_smg: {
+        iw8_sm_papa90: {
+          properties: {
+            hits: 920,
+            kills: 90
+          }
+        },
+      }
+    }
+  }
+};
+
+export const mockTacticalEqData = {
+  lifetime: {
+    itemData: {
+      tacticals: {
+        equip_flash: {
+          properties: {
+            extraStat1: 125,
+            uses: 840
+          }
+        },
+      }
+    }
+  }
+};
+export const mockKillStreakData = {
+  lifetime: {
+    scorestreakData: {
+      lethalScorestreakData: {
+        uav: {
+          properties: {
+            extraStat1: 3469,
+            uses: 798,
+          }
+        },
+      }
+    }
+  }
+};
+export const mockFieldUpgradeData = {
+  lifetime: {
+    itemData: {
+      supers: {
+        super_deadsilence: {
+          properties: {
+            kills: 1214,
+            uses: 1840
+          }
+        },
       }
     }
   }

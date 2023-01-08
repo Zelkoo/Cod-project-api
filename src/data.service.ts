@@ -149,7 +149,7 @@ export class DataService {
   public fetchData(): Observable<any> {
     return this.http.get('./assets/cod-data.json');
   }
-getOverviewData(prop: any): Observable<any> {
+  getOverviewData(prop: any): Observable<any> {
     return this.fetchData().pipe(map((data: any) => {
       const fullData = data
       const propertiesData = fullData.lifetime.all.properties
@@ -200,6 +200,7 @@ getOverviewData(prop: any): Observable<any> {
     );
   }
   getMarksmanRifleData(weaponName: string, properties: string): Observable<any> {
+    let weapons: any
     return this.fetchData().pipe(
       map((data: any) => {
         const fullData = data
@@ -217,6 +218,7 @@ getOverviewData(prop: any): Observable<any> {
     );
   }
   getLargeMachineGunqData(weaponName: string, properties: string): Observable<any> {
+    let weapons: any
     return this.fetchData().pipe(
       map((data: any) => {
         const fullData = data
@@ -236,6 +238,7 @@ getOverviewData(prop: any): Observable<any> {
     );
   }
   getSniperRifleData(weaponName: string, properties: string): Observable<any> {
+    let weapons: any
     return this.fetchData().pipe(
       map((data: any) => {
         const fullData = data
@@ -270,7 +273,9 @@ getOverviewData(prop: any): Observable<any> {
       })
     );
   }
+
   getTacticalEqData(weaponName: string, properties: string): Observable<any> {
+    let weapons: any
     return this.fetchData().pipe(
       map((data: any) => {
         const fullData = data
@@ -297,6 +302,7 @@ getOverviewData(prop: any): Observable<any> {
     );
   }
   getKillsStreakData(weaponName: string, properties: string): Observable<any> {
+    let weapons: any
     return this.fetchData().pipe(
       map((data: any) => {
         const fullData = data
@@ -326,6 +332,7 @@ getOverviewData(prop: any): Observable<any> {
     );
   }
   getFieldUpgradesData(weaponName: string, properties: string): Observable<any> {
+    let weapons: any
     return this.fetchData().pipe(
       map((data: any) => {
         const fullData = data
@@ -347,7 +354,8 @@ getOverviewData(prop: any): Observable<any> {
       })
     );
   }
-  getPistolData(weaponName: string, properties: string): Observable<any> {{
+  getPistolData(weaponName: string, properties: string): Observable<any> {
+    let weapons: any
     return this.fetchData().pipe(
       map((data: any) => {
         const fullData = data
@@ -411,5 +419,4 @@ getOverviewData(prop: any): Observable<any> {
   //      };
   //      return weapons[weaponName][properties];
   //    })
-  }
 }
