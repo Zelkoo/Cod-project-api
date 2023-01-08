@@ -69,6 +69,48 @@ export const mockSniperRifleData = {
     }
   }
 };
+export const mockPistolData = {
+  lifetime: {
+    itemData: {
+      weapon_pistol: {
+        iw8_pi_mike9: {
+          properties: {
+            hits: 160,
+            kills: 777
+          }
+        },
+      }
+    }
+  }
+};
+export const mockRocketLuncherData = {
+  lifetime: {
+    itemData: {
+      weapon_launcher: {
+        iw8_la_gromeo: {
+          properties: {
+            hits: 160,
+            kills: 5
+          }
+        },
+      }
+    }
+  }
+};
+export const mockMeleeWeaponData = {
+  lifetime: {
+    itemData: {
+      weapon_melee: {
+        iw8_knife: {
+          properties: {
+            hits: 160,
+            kills: 55
+          }
+        },
+      }
+    }
+  }
+};
 export const mockMachineGunData = {
   lifetime: {
     itemData: {

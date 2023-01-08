@@ -5,7 +5,7 @@ import {
   mockAssaaultRifleData,
   mockFetchData, mockFieldUpgradeData, mockKillStreakData,
   mockLargeMachineGunData, mockMachineGunData,
-  mockMarksmanRifleData,
+  mockMarksmanRifleData, mockMeleeWeaponData, mockPistolData, mockRocketLuncherData,
   mockShotgunData, mockSniperRifleData, mockTacticalEqData
 } from "./helpers/mock-data";
 
@@ -116,4 +116,27 @@ describe('Tests for DataService', () => {
     setup(mockFieldUpgradeData)
   })
 
+  it('Pistol test properties', () => {
+    service.getPistolData('renetti', 'kills').subscribe(data => {
+      console.log('Pistol', data)
+      expect(data).toEqual(777)
+    })
+    setup(mockPistolData)
+  })
+
+  it('RocketLuncher test properties', () => {
+    service.getRocketLuncherData('pila', 'kills').subscribe(data => {
+      console.log('RocketLuncher', data)
+      expect(data).toEqual(5)
+    })
+    setup(mockRocketLuncherData)
+  })
+
+  it('Melee test properties', () => {
+    service.getMeleeWeaponData('knife', 'kills').subscribe(data => {
+      console.log('Knife', data)
+      expect(data).toEqual(55)
+    })
+    setup(mockMeleeWeaponData)
+  })
 });
