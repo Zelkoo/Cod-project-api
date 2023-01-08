@@ -84,8 +84,16 @@ describe('Tests for DataService', () => {
     setup(mockSniperRifleData)
   })
 
+  it('MachineGun test properties', () => {
+    service.getMachineGunData('p90', 'kills').subscribe(data => {
+      console.log('p90', data)
+      expect(data).toEqual(90)
+    })
+    setup(mockMachineGunData)
+  })
+
   it('Tactical Equipment test properties', () => {
-    service.getMachineGunData('flesh', 'uses').subscribe(data => {
+    service.getTacticalEqData('flesh', 'uses').subscribe(data => {
       console.log('Flesh', data)
       expect(data).toEqual(840)
     })
@@ -93,7 +101,7 @@ describe('Tests for DataService', () => {
   })
 
   it('KillStreak test properties', () => {
-    service.getMachineGunData('uav', 'uses').subscribe(data => {
+    service.getKillsStreakData('uav', 'uses').subscribe(data => {
       console.log('Uav', data)
       expect(data).toEqual(798)
     })
@@ -101,7 +109,7 @@ describe('Tests for DataService', () => {
   })
 
   it('FieldUpgrade test properties', () => {
-    service.getMachineGunData('deadSilence', 'uses').subscribe(data => {
+    service.getFieldUpgradesData('deadSilence', 'uses').subscribe(data => {
       console.log('DeadSilence', data)
       expect(data).toEqual(1840)
     })
