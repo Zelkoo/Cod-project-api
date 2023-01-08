@@ -31,14 +31,14 @@ module.exports = function (config) {
         { type: 'html' },
         { type: 'text-summary' }
       ]
-    },
+  },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
-    singleRun: false,
+    singleRun: true,
     restartOnFileChange: true
   });
 };
