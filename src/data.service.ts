@@ -380,10 +380,10 @@ export class DataService {
           const fullData = data
           const rocketLuncher = fullData.lifetime.itemData.weapon_launcher
           const weapons: any = {
-            pila: this.pila = rocketLuncher.iw8_la_gromeo.properties,
-            rpg7: this.rpg7 = rocketLuncher.iw8_la_rpapa7.properties,
-            joker: this.joker = rocketLuncher.iw8_la_juliet.properties,
-            sterlap: this.sterlap = rocketLuncher.iw8_la_kgolf.properties,
+            pila: this.pila = rocketLuncher.iw8_la_gromeo?.properties,
+            rpg7: this.rpg7 = rocketLuncher.iw8_la_rpapa7?.properties,
+            joker: this.joker = rocketLuncher.iw8_la_juliet?.properties,
+            sterlap: this.sterlap = rocketLuncher.iw8_la_kgolf?.properties,
           };
           return weapons[weaponName][properties];
         })
