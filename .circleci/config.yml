@@ -6,6 +6,8 @@ workflows:
       - build
       - test
 
+orbs:
+  browser-tools: circleci/browser-tools@1.4.0
 
 jobs:
   build:
@@ -25,6 +27,7 @@ jobs:
     steps:
       - checkout
       - run: npm install
+      - browser-tools/install-chrome:
+          channel: stable
       - run:
-           name: Unit Test
-           command: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+          command: npm test
