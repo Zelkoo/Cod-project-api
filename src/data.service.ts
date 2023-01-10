@@ -1,7 +1,13 @@
 import {Injectable} from "@angular/core";
 import {map, Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {AssaultRifleData, PistolData, WeaponPropertiesData} from "./helpers/data-interface";
+import {
+  AssaultRifleData, FieldUpgradePropertiesData, GameInfoData, KillStreakData, KillStreakPropertiesData,
+  LargeMachinegunData, MachinegunData,
+  MarksmanRifleData, MeleeWeaponData, PistolData, RocketLuncherData,
+  ShotguneData, SniperRifleData, TacticalEquipmentData, TacticalPropertiesData,
+  WeaponPropertiesData
+} from "./helpers/data-interface";
 @Injectable({
   providedIn: 'any'
 })
@@ -75,52 +81,51 @@ export class DataService {
   fennec?: WeaponPropertiesData
   uzi?: WeaponPropertiesData
   // Tactical Equipment
-  gasGranate?: any;
-  wykrywajacy?: any;
-  decoy?: any;
-  smoke?: any;
-  ogluszajacy?: any;
-  sensorPulse?: any;
-  flesh?: any;
-  adrealine?: any;
+  gasGranate?: TacticalPropertiesData;
+  wykrywajacy?: TacticalPropertiesData;
+  decoy?: TacticalPropertiesData;
+  smoke?: TacticalPropertiesData;
+  ogluszajacy?: TacticalPropertiesData;
+  sensorPulse?: TacticalPropertiesData;
+  flesh?: TacticalPropertiesData;
+  adrealine?: TacticalPropertiesData;
 // Offensive Equipment
-  granate?: any;
-  thermit?: any;
-  claymore?: any;
-  c4?: any;
-  mine?: any;
-  throwingKnife?: any;
-  molotov?: any;
+  granate?: TacticalPropertiesData;
+  thermit?: TacticalPropertiesData;
+  claymore?: TacticalPropertiesData;
+  c4?: TacticalPropertiesData;
+  mine?: TacticalPropertiesData;
+  throwingKnife?: TacticalPropertiesData;
+  molotov?: TacticalPropertiesData;
   // Strike Reward
-  airStrike?: any
-  cruiseMissile?: any
-  manualTurret?: any
-  whitePhosphorus?: any
-  jetVtol?: any
-  chopperGunner?: any
-  gunShip?: any
-  autoTurret?: any
-  clusterFire?: any
-  colos?: any
-  wheelson?: any
-  chopperSupport?: any
-  airDrop?: any
-  chopperRadar?: any
-  counterUav?: any
-  uav?: any
-  superUav?: any
+  airStrike?: KillStreakPropertiesData
+  cruiseMissile?: KillStreakPropertiesData
+  manualTurret?: KillStreakPropertiesData
+  whitePhosphorus?: KillStreakPropertiesData
+  jetVtol?: KillStreakPropertiesData
+  chopperGunner?: KillStreakPropertiesData
+  gunShip?: KillStreakPropertiesData
+  autoTurret?: KillStreakPropertiesData
+  clusterFire?: KillStreakPropertiesData
+  colos?: KillStreakPropertiesData
+  wheelson?: KillStreakPropertiesData
+  chopperSupport?: KillStreakPropertiesData
+  chopperRadar?: KillStreakPropertiesData
+  counterUav?: KillStreakPropertiesData
+  uav?: KillStreakPropertiesData
+  superUav?: KillStreakPropertiesData
   // ulepszenia polowe
-  droneIem?: any;
-  trophy?: any;
-  supplyDrop?: any;
-  drop?: any;
-  taktycznyDesan?: any;
-  armorBox?: any;
-  recon?: any;
-  deadSilence?: any;
-  tacticShield?: any;
-  powerAmmo?: any;
-  balon?: any;
+  droneIem?: FieldUpgradePropertiesData;
+  trophy?: FieldUpgradePropertiesData;
+  supplyDrop?: FieldUpgradePropertiesData;
+  drop?: FieldUpgradePropertiesData;
+  taktycznyDesan?: FieldUpgradePropertiesData;
+  armorBox?: FieldUpgradePropertiesData;
+  recon?: FieldUpgradePropertiesData;
+  deadSilence?: FieldUpgradePropertiesData;
+  tacticShield?: FieldUpgradePropertiesData;
+  powerAmmo?: FieldUpgradePropertiesData;
+  balon?: FieldUpgradePropertiesData;
   // Account Info
   gameTitle?: string;
   gamePlatform?: string;
@@ -149,11 +154,11 @@ export class DataService {
   public fetchData(): Observable<any> {
     return this.http.get('./assets/cod-data.json');
   }
-  getOverviewData(prop: any): Observable<any> {
+  getOverviewData(properties: string): Observable<any> {
     return this.fetchData().pipe(map((data: any) => {
       const fullData = data
       const propertiesData = fullData.lifetime.all.properties
-      return propertiesData[prop]
+      return propertiesData[properties]
     }))
 }
   getAssaultRifleData(weaponName: string, properties: string): Observable<any> {
@@ -167,7 +172,6 @@ export class DataService {
           fal: this.fal = assaultRifle.iw8_ar_falima?.properties,
           fr556: this.fr556 = assaultRifle.iw8_ar_falpha?.properties,
           cr56amax: this.cr56amax = assaultRifle.iw8_ar_galima?.properties,
-
           kilo141: this.kilo141 = assaultRifle.iw8_ar_kilo433?.properties,
           m13: this.m13 = assaultRifle.iw8_ar_mcharlie?.properties,
           m4a1: this.m4a1 = assaultRifle.iw8_ar_mike4?.properties,
@@ -181,11 +185,9 @@ export class DataService {
     );
   }
   getShotgunRifleData(weaponName: string, properties: string): Observable<any> {
-    let weapons: any
     return this.fetchData().pipe(
-      map((data: any) => {
-        const fullData = data
-        const shotgun = fullData.lifetime.itemData.weapon_shotgun
+      map((data: ShotguneData) => {
+        const shotgun = data.lifetime.itemData.weapon_shotgun
         const weapons: any = {
           model1680: this.model680 = shotgun.iw8_sh_romeo870?.properties,
           r90: this.r90 = shotgun.iw8_sh_dpapa12?.properties,
@@ -199,11 +201,9 @@ export class DataService {
     );
   }
   getMarksmanRifleData(weaponName: string, properties: string): Observable<any> {
-    let weapons: any
     return this.fetchData().pipe(
-      map((data: any) => {
-        const fullData = data
-        const marksmanRifle = fullData.lifetime.itemData.weapon_marksman
+      map((data: MarksmanRifleData) => {
+        const marksmanRifle = data.lifetime.itemData.weapon_marksman
         const weapons: any = {
           ebr14: this.ebr14 = marksmanRifle.iw8_sn_sbeta?.properties,
           mk2Carbine: this.mk2Carbine = marksmanRifle.iw8_sn_romeo700?.properties,
@@ -217,11 +217,9 @@ export class DataService {
     );
   }
   getLargeMachineGunqData(weaponName: string, properties: string): Observable<any> {
-    let weapons: any
     return this.fetchData().pipe(
-      map((data: any) => {
-        const fullData = data
-        const largeMachineGun = fullData.lifetime.itemData.weapon_lmg
+      map((data: LargeMachinegunData) => {
+        const largeMachineGun = data.lifetime.itemData.weapon_lmg
         const weapons: any = {
           pkm: this.pkm = largeMachineGun.iw8_lm_pkilo?.properties,
           sa87: this.sa87 = largeMachineGun.iw8_lm_lima86?.properties,
@@ -237,11 +235,9 @@ export class DataService {
     );
   }
   getSniperRifleData(weaponName: string, properties: string): Observable<any> {
-    let weapons: any
     return this.fetchData().pipe(
-      map((data: any) => {
-        const fullData = data
-        const sniper = fullData.lifetime.itemData.weapon_sniper
+      map((data: SniperRifleData) => {
+        const sniper = data.lifetime.itemData.weapon_sniper
         const weapons: any = {
           ax50: this.ax50 = sniper.iw8_sn_alpha50?.properties,
           rytecAmr: this.rytecAmr = sniper.iw8_sn_xmike109?.properties,
@@ -252,11 +248,41 @@ export class DataService {
       })
     );
   }
+  getRocketLuncherData(weaponName: string, properties: string): Observable<any> {
+    return this.fetchData().pipe(
+      map((data: RocketLuncherData) => {
+        const rocketLuncher = data.lifetime.itemData.weapon_launcher
+        const weapons: any = {
+          pila: this.pila = rocketLuncher.iw8_la_gromeo?.properties,
+          rpg7: this.rpg7 = rocketLuncher.iw8_la_rpapa7?.properties,
+          joker: this.joker = rocketLuncher.iw8_la_juliet?.properties,
+          sterlap: this.sterlap = rocketLuncher.iw8_la_kgolf?.properties,
+        };
+        return weapons[weaponName][properties];
+      })
+    );
+  }
+  getPistolData(weaponName: string, properties: string): Observable<any> {
+    return this.fetchData().pipe(
+      map((data: PistolData
+      ) => {
+        const pistol = data.lifetime.itemData.weapon_pistol
+        const weapons = {
+          _357: this._357 = pistol.iw8_pi_cpapa?.properties,
+          renetti: this.renetti = pistol.iw8_pi_mike9?.properties,
+          _1911: this._1911 = pistol.iw8_pi_mike1911?.properties,
+          x16: this.x16 = pistol.iw8_pi_golf21?.properties,
+          _50gs: this._50gs = pistol.iw8_pi_decho?.properties,
+          m19: this.m19 = pistol.iw8_pi_papa320?.properties,
+        };
+        return weapons[weaponName][properties];
+      })
+    );
+  }
   getMachineGunData(weaponName: string, properties: string): Observable<any> {
     return this.fetchData().pipe(
-      map((data: any) => {
-        const fullData: any = data
-        const smg = fullData.lifetime.itemData.weapon_smg
+      map((data: MachinegunData) => {
+        const smg = data.lifetime.itemData.weapon_smg
         const weapons: any = {
           mp7: this.mp7 = smg.iw8_sm_mpapa7?.properties,
           aug: this.aug = smg.iw8_sm_augolf?.properties,
@@ -273,11 +299,9 @@ export class DataService {
     );
   }
   getTacticalEqData(weaponName: string, properties: string): Observable<any> {
-    let weapons: any
     return this.fetchData().pipe(
-      map((data: any) => {
-        const fullData = data
-        const tacticalsEquipment = fullData.lifetime.itemData.tacticals
+      map((data: TacticalEquipmentData) => {
+        const tacticalsEquipment = data.lifetime.itemData.tacticals
         const weapons: any = {
           gasGranate: this.gasGranate = tacticalsEquipment.equip_gas_grenade?.properties,
           wykrywajacy: this.wykrywajacy = tacticalsEquipment.equip_snapshot_grenade?.properties,
@@ -300,12 +324,9 @@ export class DataService {
     );
   }
   getKillsStreakData(weaponName: string, properties: string): Observable<any> {
-    let weapons: any
     return this.fetchData().pipe(
-      map((data: any) => {
-        const fullData = data
+      map((data: KillStreakData) => {
         const killStreak = data.lifetime.scorestreakData.lethalScorestreakData
-
         const weapons: any = {
           airStrike:  this.airStrike = killStreak.precision_airstrike?.properties,
           cruiseMissile:  this.cruiseMissile = killStreak.cruise_predator?.properties,
@@ -319,7 +340,6 @@ export class DataService {
           colos: this.colos = killStreak.juggernaut?.properties,
           chopperSupport:  this.chopperSupport = killStreak.chopper_support?.properties,
           wheelson: this.wheelson = killStreak.pac_sentry?.properties,
-          airDrop: this.airDrop = killStreak?.properties,
           chopperRadar: this.chopperRadar = killStreak.radar_drone_overwatch?.properties,
           counterUav: this.counterUav = killStreak.scrambler_drone_guard?.properties,
           uav:  this.uav = killStreak.uav?.properties,
@@ -330,11 +350,9 @@ export class DataService {
     );
   }
   getFieldUpgradesData(weaponName: string, properties: string): Observable<any> {
-    let weapons: any
     return this.fetchData().pipe(
-      map((data: any) => {
-        const fullData = data
-        const fieldUpgrades = fullData.lifetime.itemData.supers
+      map((data: FieldUpgradePropertiesData) => {
+        const fieldUpgrades = data.lifetime.itemData.supers
         const weapons: any = {
           droneIem: this.droneIem = fieldUpgrades.super_emp_drone?.properties,
           trophy: this.trophy = fieldUpgrades.super_trophy?.properties,
@@ -352,48 +370,11 @@ export class DataService {
       })
     );
   }
-  getPistolData(weaponName: string, properties: string): Observable<any> {
-    return this.fetchData().pipe(
-      map((data: any
-      ) => {
-        const pistol = data.lifetime.itemData.weapon_pistol
-        const weapons = {
-          _357: this._357 = pistol.iw8_pi_cpapa?.properties,
-          renetti: this.renetti = pistol.iw8_pi_mike9?.properties,
-          _1911: this._1911 = pistol.iw8_pi_mike1911?.properties,
-          x16: this.x16 = pistol.iw8_pi_golf21?.properties,
-          _50gs: this._50gs = pistol.iw8_pi_decho?.properties,
-          m19: this.m19 = pistol.iw8_pi_papa320?.properties,
-        };
-        return weapons[weaponName][properties];
-      })
-    );
-  }
-
-  getRocketLuncherData(weaponName: string, properties: string): Observable<any> {
-    let weapons: any
-      return this.fetchData().pipe(
-        map((data: any) => {
-          const fullData = data
-          const rocketLuncher = fullData.lifetime.itemData.weapon_launcher
-          const weapons: any = {
-            pila: this.pila = rocketLuncher.iw8_la_gromeo?.properties,
-            rpg7: this.rpg7 = rocketLuncher.iw8_la_rpapa7?.properties,
-            joker: this.joker = rocketLuncher.iw8_la_juliet?.properties,
-            sterlap: this.sterlap = rocketLuncher.iw8_la_kgolf?.properties,
-          };
-          return weapons[weaponName][properties];
-        })
-      );
-   }
-
-   getMeleeWeaponData(weaponName: string, properties: string): Observable<any> {
-    let weapons: any
+  getMeleeWeaponData(weaponName: string, properties: string): Observable<any> {
      return this.fetchData().pipe(
-       map((data: any) => {
-         const fullData = data
-         const shield = fullData.lifetime.itemData.weapon_other
-         const meleeWeapon = fullData.lifetime.itemData.weapon_melee
+       map((data: MeleeWeaponData) => {
+         const shield = data.lifetime.itemData.weapon_other
+         const meleeWeapon = data.lifetime.itemData.weapon_melee
          const weapons: any = {
            knife: this.knife = meleeWeapon.iw8_knife?.properties,
            akimboBlades: this.akimboBlades = meleeWeapon.iw8_me_akimboblades?.properties,
@@ -404,22 +385,21 @@ export class DataService {
        })
      );
    }
-   // }
-  //  getGameInfoData(weaponName: string, properties: string) {
-  //    this.fetchData().subscribe((data) => {
-  //      const fullData = data.data
-  //      const shield = fullData.lifetime.itemData.weapon_other
-  //      const meleeWeapon = fullData.lifetime.itemData.weapon_melee
-  //      const weapons: any = {
-  //        gameTitle: this.gameTitle = fullData.title,
-  //        gamePlatform: this.gamePlatform = fullData.platform,
-  //        userName: this.userName = fullData.username,
-  //        accountLevel: this.accountLevel = fullData.level,
-  //        remainderExp: this.remainderExp = fullData.levelXpRemainder,
-  //        gainedExp: this.gainedExp = fullData.levelXpGained,
-  //        prestige: this.prestige = fullData.prestige,
-  //        totalExp: this.totalExp = fullData.totalXp,
-  //      };
-  //      return weapons[weaponName][properties];
-  //    })
+  getGameInfoData(properties: string): Observable<any> {
+    return this.fetchData().pipe(
+      map((data: GameInfoData) => {
+        const gameInfo: any = {
+          gameTitle: this.gameTitle = data.title,
+          gamePlatform: this.gamePlatform = data.platform,
+          userName: this.userName = data.username,
+          accountLevel: this.accountLevel = data.level,
+          remainderExp: this.remainderExp = data.levelXpRemainder,
+          gainedExp: this.gainedExp = data.levelXpGained,
+          prestige: this.prestige = data.prestige,
+          totalExp: this.totalExp = data.totalXp,
+        };
+        return gameInfo[properties];
+      })
+    );
+  }
 }

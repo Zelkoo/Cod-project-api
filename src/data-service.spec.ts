@@ -3,11 +3,12 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import {
   mockAssaaultRifleData,
-  mockFetchData, mockFieldUpgradeData, mockKillStreakData,
-  mockLargeMachineGunData, mockMachineGunData,
-  mockMarksmanRifleData, mockMeleeWeaponData, mockPistolData, mockRocketLuncherData,
-  mockShotgunData, mockSniperRifleData, mockTacticalEqData
+  mockFetchData,
+  mockFieldUpgradeData, mockKillStreakData, mockLargeMachineGunData, mockMachineGunData,
+  mockMarksmanRifleData, mockPistolData, mockRocketLuncherData, mockShotgunData, mockSniperRifleData,
+  mockTacticalEqData
 } from "./helpers/mock-data";
+
 
 describe('Tests for DataService', () => {
   let service: DataService;
