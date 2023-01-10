@@ -9,6 +9,7 @@ import {forkJoin} from "rxjs";
 import {BarChartService} from "../bar-chart-service/bar-chart.service";
 import * as assets from '@callofduty/assets'
 import {Router} from "@angular/router";
+import {WeaponPropertiesData} from "../helpers/data-interface";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -28,7 +29,8 @@ export class AppComponent implements OnInit, OnDestroy {
     accuracy: 'accuracy',
     shots: 'shots'
   };
-
+  public assaultMchineData: any[]
+public  assaultPistoleData: any[];
   public assaultRifleData: any[];
   public shotgunData: any[]
   public marksmanData: any[];
@@ -71,5 +73,38 @@ export class AppComponent implements OnInit, OnDestroy {
       this.barChartService.refreshBarChart(this.assaultRifleData, '.bar-chart-data-kills')
     });
   }
+  loadPistolData(): any {
+    const pistolData: any = {};
+    const pistolsName = ['_357', 'renetti', '_1911', 'x16', '_50gs', 'm19'];
 
+    const observables = pistolsName.map(pistolsName => this.dataService.getPistolData(pistolsName, this.dataByOption[this.selectedOption]));
+
+    forkJoin(observables).subscribe((results: any[]) => {
+      results.forEach((result, index) => {
+        const rifleName = pistolsName[index];
+        pistolData[rifleName] = result;
+      });
+
+      this.assaultPistoleData = Object.entries(pistolData).map(([name, value]) => ({ name, value }));
+      this.assaultPistoleData.sort((a, b) => b.value - a.value);
+      this.barChartService.refreshBarChart(this.assaultPistoleData, '.bar-chart-data-kills')
+    });
+  }
+  loadMachineGunData(): any {
+    const machineGunData: any = {};
+    const machineGunName = ['mp7', 'aug', 'p90', 'iso', 'mp5', 'striker45', 'pp19Bizon', 'fennec' , 'uzi'];
+
+    const observables = machineGunName.map(machineGunName => this.dataService.getMachineGunData(machineGunName, this.dataByOption[this.selectedOption]));
+
+    forkJoin(observables).subscribe((results: any[]) => {
+      results.forEach((result, index) => {
+        const rifleName = machineGunName[index];
+        machineGunData[rifleName] = result;
+      });
+
+      this.assaultMchineData = Object.entries(machineGunData).map(([name, value]) => ({ name, value }));
+      this.assaultMchineData.sort((a, b) => b.value - a.value);
+      this.barChartService.refreshBarChart(this.assaultMchineData, '.bar-chart-data-kills')
+    });
+  }
 };
