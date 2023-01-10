@@ -43,7 +43,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
       this.dataService.getOverviewData(OverviewDataType.Deaths),
       this.dataService.getOverviewData(OverviewDataType.BestKillStreak),
       this.dataService.getOverviewData(OverviewDataType.Losses),
-      this.dataService.getOverviewData('timePlayedTotal'),
+      this.dataService.getOverviewData(OverviewDataType.TimePlayed),
       this.dataService.getOverviewData('totalGamesPlayed'),
       this.dataService.getOverviewData('winLossRatio')
     ]).subscribe(([scorePerMinute, scorePerGame, totalShots, wins, kdRatio, kills, assists, headshots, deaths, bestKillStreak, losses, timePlayedTotal, totalGamesPlayed, winLossRatio]

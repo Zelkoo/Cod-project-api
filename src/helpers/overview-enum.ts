@@ -9,5 +9,6 @@ export enum OverviewDataType {
   Headshots = 'headshots',
   Deaths = 'deaths',
   BestKillStreak = 'bestKillStreak',
-  Losses = 'losses'
+  Losses = 'losses',
+  TimePlayed = 'timePlayedTotal',
 }
