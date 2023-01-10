@@ -24,6 +24,54 @@ export interface PistolData {
     };
   };
 }
+export interface AssaultRifleData {
+  lifetime: {
+    itemData: {
+      weapon_assault_rifle: {
+        iw8_ar_akilo47: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_anovember94: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_asierra12: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_falima: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_falpha: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_galima: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_kilo433: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_mcharlie: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_mike4: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_scharlie: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_tango21: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_valpha: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_sierra552: {
+          properties: WeaponPropertiesData;
+        };
+      };
+    };
+  };
+}
+
 export interface WeaponPropertiesData {
   hits: number
   kills: number
@@ -32,5 +80,4 @@ export interface WeaponPropertiesData {
   accuracy: number
   shots: number
   deaths: number
-
 }

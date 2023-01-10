@@ -1,80 +1,79 @@
 import {Injectable} from "@angular/core";
 import {map, Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {PistolData} from "./helpers/data-interface";
+import {AssaultRifleData, PistolData, WeaponPropertiesData} from "./helpers/data-interface";
 @Injectable({
   providedIn: 'any'
 })
 export class DataService {
+  ebr14?: WeaponPropertiesData;
+  mk2Carbine?: WeaponPropertiesData;
+  kark98k?: WeaponPropertiesData;
+  crossBow?: WeaponPropertiesData;
+  sks?: WeaponPropertiesData;
+  srpr208?: WeaponPropertiesData;
   // marksmanRifle
-    ebr14?: any
-    mk2Carbine?: any;
-    kark98k?: any;
-    crossBow?: any;
-    sks?: any;
-    srpr208?: any;
-  // Assault Rifle
-  ak47?: any
-  an94?: any;
-  oden?: any;
-  fal?: any;
-  fr556?: any;
-  cr56amax?: any;
-  kilo141?: any;
-  m13?: any;
-  m4a1?: any;
-  fnscar17?: any;
-  grau556?: any;
-  ram7?: any;
-  asVal?: any;
+  ak47?:WeaponPropertiesData;
+  an94?: WeaponPropertiesData;
+  oden?: WeaponPropertiesData;
+  fal?: WeaponPropertiesData;
+  fr556?: WeaponPropertiesData;
+  cr56amax?: WeaponPropertiesData;
+  kilo141?: WeaponPropertiesData;
+  m13?: WeaponPropertiesData;
+  m4a1?: WeaponPropertiesData;
+  fnscar17?: WeaponPropertiesData;
+  grau556?: WeaponPropertiesData;
+  ram7?: WeaponPropertiesData;
+  asVal?: WeaponPropertiesData;
   // Pistols
-  _357?: any;
-  renetti?: any;
-  _1911?: any;
-  x16?: any;
-  _50gs?: any;
-  m19?: any;
+  _357?: WeaponPropertiesData;
+  renetti?: WeaponPropertiesData;
+  _1911?: WeaponPropertiesData;
+  x16?: WeaponPropertiesData;
+  _50gs?: WeaponPropertiesData;
+  m19?: WeaponPropertiesData;
   // Rocket Luncher
-  pila?: any;
-  rpg7?: any;
-  joker?: any;
-  sterlap?: any;
+  pila?: WeaponPropertiesData;
+  rpg7?: WeaponPropertiesData;
+  joker?: WeaponPropertiesData;
+  sterlap?: WeaponPropertiesData;
   // Melee Weapon
-  knife?: any;
-  akimboBlades?: any;
-  akimboBlunt?: any;
-  shield?: any;
+  knife?: WeaponPropertiesData;
+  akimboBlades?: WeaponPropertiesData;
+  akimboBlunt?: WeaponPropertiesData;
+  shield?: WeaponPropertiesData;
   // RKM
-  pkm?: any;
-  sa87?: any;
-  m91?: any;
-  mg34?: any;
-  holger26?: any;
-  burenMk9?: any;
-  rkmFinn?: any;
-  kmRaal?: any;
+  pkm?: WeaponPropertiesData;
+  sa87?: WeaponPropertiesData;
+  m91?: WeaponPropertiesData;
+  mg34?: WeaponPropertiesData;
+  holger26?: WeaponPropertiesData;
+  burenMk9?: WeaponPropertiesData;
+  rkmFinn?: WeaponPropertiesData;
+  kmRaal?: WeaponPropertiesData;
   // Shotgun
-  model680?: any;
-  r90?: any;
-  _725?: any;
-  origin12?: any;
-  vlkRouge?: any;
-  jak12?: any;
+  model680?: WeaponPropertiesData;
+  r90?: WeaponPropertiesData;
+  _725?: WeaponPropertiesData;
+  origin12?: WeaponPropertiesData;
+  vlkRouge?: WeaponPropertiesData;
+  jak12?: WeaponPropertiesData;
   // Sniper
-  ax50?: any;
-  rytecAmr?: any;
-  hdr?: any;
-  dragunow: any;
+  ax50?: WeaponPropertiesData;
+  rytecAmr?: WeaponPropertiesData;
+  hdr?: WeaponPropertiesData;
+  dragunow: WeaponPropertiesData;
   // Machine Gun
-  mp7?: any;
-  aug?: any;
-  p90?: any;
-  iso?: any;
-  mp5?: any;
-  striker45?: any;
-  pp19Bizon?: any;
-  fennec?: any;
-  uzi?: any;
+  mp7?: WeaponPropertiesData
+  aug?: WeaponPropertiesData
+  p90?: WeaponPropertiesData
+  iso?: WeaponPropertiesData
+  mp5?: WeaponPropertiesData
+  striker45?: WeaponPropertiesData
+  pp19Bizon?: WeaponPropertiesData
+  fennec?: WeaponPropertiesData
+  uzi?: WeaponPropertiesData
   // Tactical Equipment
   gasGranate?: any;
   wykrywajacy?: any;
@@ -158,11 +157,9 @@ export class DataService {
     }))
 }
   getAssaultRifleData(weaponName: string, properties: string): Observable<any> {
-    let weapons: any
     return this.fetchData().pipe(
-      map((data: any) => {
-        const fullData = data
-        const assaultRifle = fullData.lifetime.itemData.weapon_assault_rifle
+      map((data: AssaultRifleData) => {
+        const assaultRifle = data.lifetime.itemData.weapon_assault_rifle
         const weapons = {
           ak47: this.ak47 = assaultRifle.iw8_ar_akilo47?.properties,
           an94: this.an94 = assaultRifle.iw8_ar_anovember94?.properties,
@@ -170,6 +167,7 @@ export class DataService {
           fal: this.fal = assaultRifle.iw8_ar_falima?.properties,
           fr556: this.fr556 = assaultRifle.iw8_ar_falpha?.properties,
           cr56amax: this.cr56amax = assaultRifle.iw8_ar_galima?.properties,
+
           kilo141: this.kilo141 = assaultRifle.iw8_ar_kilo433?.properties,
           m13: this.m13 = assaultRifle.iw8_ar_mcharlie?.properties,
           m4a1: this.m4a1 = assaultRifle.iw8_ar_mike4?.properties,
@@ -257,7 +255,7 @@ export class DataService {
   getMachineGunData(weaponName: string, properties: string): Observable<any> {
     return this.fetchData().pipe(
       map((data: any) => {
-        const fullData = data
+        const fullData: any = data
         const smg = fullData.lifetime.itemData.weapon_smg
         const weapons: any = {
           mp7: this.mp7 = smg.iw8_sm_mpapa7?.properties,
@@ -356,11 +354,10 @@ export class DataService {
   }
   getPistolData(weaponName: string, properties: string): Observable<any> {
     return this.fetchData().pipe(
-      map((data: PistolData
+      map((data: any
       ) => {
-        const fullData = data
-        const pistol = fullData.lifetime.itemData?.weapon_pistol
-        const weapons: any = {
+        const pistol = data.lifetime.itemData.weapon_pistol
+        const weapons = {
           _357: this._357 = pistol.iw8_pi_cpapa?.properties,
           renetti: this.renetti = pistol.iw8_pi_mike9?.properties,
           _1911: this._1911 = pistol.iw8_pi_mike1911?.properties,
