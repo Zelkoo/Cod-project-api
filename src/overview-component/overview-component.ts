@@ -1,9 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DataService} from "../data.service";
 import {forkJoin, Subscription} from "rxjs";
-import {OverviewDataType} from "../helpers/overview-enum";
+import {OverviewDataType, Pistols} from "../helpers/overview-enum";
 import * as d3 from 'd3';
 import {AppComponent} from "../app/app.component";
+import {WeaponPropertiesData} from "../helpers/data-interface";
+
 @Component({
   selector: 'overview-component',
   templateUrl: './overview-component.html',
@@ -30,6 +32,9 @@ export class OverviewComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.dataService.getPistolData(Pistols.Renetti, 'hits').subscribe((data: WeaponPropertiesData) => {
+      console.log(data)
+    })
     this.app.loadAssaultRifleData()
     this.subscription = forkJoin([
       this.dataService.getOverviewData(OverviewDataType.ScorePerMinute),

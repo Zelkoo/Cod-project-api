@@ -1,15 +1,12 @@
-import {
-  Component,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
-import { DataService } from 'src/data.service';
+import {Component, OnDestroy, OnInit,} from '@angular/core';
+import {DataService} from 'src/data.service';
 import * as d3 from 'd3';
 import {forkJoin} from "rxjs";
 import {BarChartService} from "../bar-chart-service/bar-chart.service";
 import * as assets from '@callofduty/assets'
 import {Router} from "@angular/router";
-import {WeaponPropertiesData} from "../helpers/data-interface";
+import {AssaultRifle, MachineGun} from "../helpers/overview-enum";
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -25,7 +22,7 @@ export class AppComponent implements OnInit, OnDestroy {
     deaths: 'deaths',
     hits: 'hits',
     kdRatio: 'kdRatio',
-    headShots: 'headshots',
+    headshots: 'headshots',
     accuracy: 'accuracy',
     shots: 'shots'
   };
@@ -58,7 +55,7 @@ public  assaultPistoleData: any[];
   }
   loadAssaultRifleData(): any {
     const rifleData: any = {};
-    const rifleNames = ['ak47', 'an94', 'oden', 'fal', 'fr556', 'cr56amax', 'kilo141', 'm13' , 'm4a1','fnscar17' ,'grau556' ,'ram7' ,'asVal'];
+    const rifleNames = [AssaultRifle.Ak47, AssaultRifle.An94, AssaultRifle.Oden, AssaultRifle.Fal, AssaultRifle.Fr556, AssaultRifle.Cr56Amax, AssaultRifle.Kilo141, AssaultRifle.M13 , AssaultRifle.M4a1,AssaultRifle.FnScar17 ,AssaultRifle.Grau556 ,AssaultRifle.Ram7 ,AssaultRifle.AsVal];
 
     const observables = rifleNames.map(rifleName => this.dataService.getAssaultRifleData(rifleName, this.dataByOption[this.selectedOption]));
 
@@ -77,22 +74,22 @@ public  assaultPistoleData: any[];
     const pistolData: any = {};
     const pistolsName = ['_357', 'renetti', '_1911', 'x16', '_50gs', 'm19'];
 
-    const observables = pistolsName.map(pistolsName => this.dataService.getPistolData(pistolsName, this.dataByOption[this.selectedOption]));
+    // const observables = pistolsName.map(pistolsName => this.dataService.getPistolData(pistolsName, this.dataByOption[this.selectedOption]));
 
-    forkJoin(observables).subscribe((results: any[]) => {
-      results.forEach((result, index) => {
-        const rifleName = pistolsName[index];
-        pistolData[rifleName] = result;
-      });
-
-      this.assaultPistoleData = Object.entries(pistolData).map(([name, value]) => ({ name, value }));
-      this.assaultPistoleData.sort((a, b) => b.value - a.value);
-      this.barChartService.refreshBarChart(this.assaultPistoleData, '.bar-chart-data')
-    });
+    // forkJoin(observables).subscribe((results: any[]) => {
+    //   results.forEach((result, index) => {
+    //     const rifleName = pistolsName[index];
+    //     pistolData[rifleName] = result;
+    //   });
+    //
+    //   this.assaultPistoleData = Object.entries(pistolData).map(([name, value]) => ({ name, value }));
+    //   this.assaultPistoleData.sort((a, b) => b.value - a.value);
+    //   this.barChartService.refreshBarChart(this.assaultPistoleData, '.bar-chart-data')
+    // });
   }
   loadMachineGunData(): any {
     const machineGunData: any = {};
-    const machineGunName = ['mp7', 'aug', 'p90', 'iso', 'mp5', 'striker45', 'pp19Bizon', 'fennec' , 'uzi'];
+    const machineGunName = [MachineGun.Mp7, MachineGun.Aug, MachineGun.P90, MachineGun.Iso, MachineGun.Mp5, MachineGun.Striker45, MachineGun.Pp19Bizon, MachineGun.Fennec, MachineGun.Uzi ];
 
     const observables = machineGunName.map(machineGunName => this.dataService.getMachineGunData(machineGunName, this.dataByOption[this.selectedOption]));
 
