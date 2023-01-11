@@ -1,6 +1,6 @@
 <router-outlet ></router-outlet>
 <div *ngIf="router.url === '/overview-component'">
-  <div class="bar-chart-data-kills" ></div>
+  <div class="bar-chart-data" ></div>
   <select *ngIf="router.url === '/overview-component'" [(ngModel)]="selectedOption"  (change)="loadAssaultRifleData()" class="drop-down-data-options">
 
     <option *ngFor="let option of options" [ngValue]="option">{{option}}</option>

@@ -1,13 +1,33 @@
-import { DataService } from './data.service';
-import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {DataService} from './data.service';
+import {TestBed} from '@angular/core/testing';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {
   mockAssaaultRifleData,
   mockFetchData,
-  mockFieldUpgradeData, mockKillStreakData, mockLargeMachineGunData, mockMachineGunData,
-  mockMarksmanRifleData, mockPistolData, mockRocketLuncherData, mockShotgunData, mockSniperRifleData,
+  mockFieldUpgradeData,
+  mockKillStreakData,
+  mockLargeMachineGunData,
+  mockMachineGunData,
+  mockMarksmanRifleData,
+  mockPistolData,
+  mockRocketLuncherData,
+  mockShotgunData,
+  mockSniperRifleData,
   mockTacticalEqData
 } from "./helpers/mock-data";
+import {
+  AssaultRifle,
+  FieldUpgrade,
+  KillStreak,
+  LargeMAchineGun,
+  MachineGun,
+  MarksmanRifle,
+  Pistols,
+  RocketLuncher,
+  ShotgunRifle,
+  SniperRifle,
+  TacticalEquipment
+} from "./helpers/overview-enum";
 
 
 describe('Tests for DataService', () => {
@@ -46,7 +66,7 @@ describe('Tests for DataService', () => {
   });
   it('AssaultRifle test properties', () => {
 
-    service.getAssaultRifleData('ak47', 'kills').subscribe(data => {
+    service.getAssaultRifleData(AssaultRifle.Ak47, 'kills').subscribe(data => {
       console.log('ak47', data)
       expect(data).toEqual(123);
     });
@@ -55,70 +75,70 @@ describe('Tests for DataService', () => {
   })
   it('Shoutgun test properties', () => {
 
-    service.getShotgunRifleData('model1680', 'kills').subscribe(data => {
+    service.getShotgunRifleData(ShotgunRifle.Model1680, 'kills').subscribe(data => {
       console.log('model1680', data)
       expect(data).toEqual(741)
     })
     setup(mockShotgunData)
   })
   it('MarksmanRifle test properties', () => {
-    service.getMarksmanRifleData('ebr14', 'kills').subscribe(data => {
+    service.getMarksmanRifleData(MarksmanRifle.Ebr14, 'kills').subscribe(data => {
       console.log('ebr14', data)
       expect(data).toEqual(932)
     })
     setup(mockMarksmanRifleData)
   })
   it('LargeMachineGun test properties', () => {
-    service.getLargeMachineGunqData('burenMk9', 'kills').subscribe(data => {
+    service.getLargeMachineGunqData(LargeMAchineGun.BurenMk9, 'kills').subscribe(data => {
       console.log('burenMk9', data)
       expect(data).toEqual(845)
     })
     setup(mockLargeMachineGunData)
   })
   it('SniperRifle test properties', () => {
-    service.getSniperRifleData('hdr', 'kills').subscribe(data => {
+    service.getSniperRifleData(SniperRifle.Hdr, 'kills').subscribe(data => {
       console.log('hdr', data)
       expect(data).toEqual(155)
     })
     setup(mockSniperRifleData)
   })
   it('MachineGun test properties', () => {
-    service.getMachineGunData('p90', 'kills').subscribe(data => {
+    service.getMachineGunData(MachineGun.P90, 'kills').subscribe(data => {
       console.log('p90', data)
       expect(data).toEqual(90)
     })
     setup(mockMachineGunData)
   })
   it('Tactical Equipment test properties', () => {
-    service.getTacticalEqData('flesh', 'uses').subscribe(data => {
+    service.getTacticalEqData(TacticalEquipment.Flesh, 'uses').subscribe(data => {
       console.log('Flesh', data)
       expect(data).toEqual(840)
     })
     setup(mockTacticalEqData)
   })
   it('KillStreak test properties', () => {
-    service.getKillsStreakData('uav', 'uses').subscribe(data => {
+    service.getKillsStreakData(KillStreak.Uav, 'uses').subscribe(data => {
       console.log('Uav', data)
       expect(data).toEqual(798)
     })
     setup(mockKillStreakData)
   })
   it('FieldUpgrade test properties', () => {
-    service.getFieldUpgradesData('deadSilence', 'uses').subscribe(data => {
+    service.getFieldUpgradesData(FieldUpgrade.DeadSilence, 'uses').subscribe(data => {
       console.log('DeadSilence', data)
       expect(data).toEqual(1840)
     })
     setup(mockFieldUpgradeData)
   })
   it('Pistol test properties', () => {
-    service.getPistolData('renetti', 'kills').subscribe(data => {
+    service.getPistolData(Pistols.Renetti, 'kills').subscribe(data => {
       console.log('Pistol', data)
       expect(data).toEqual(777)
     })
     setup(mockPistolData)
   })
   it('RocketLuncher test properties', () => {
-    service.getRocketLuncherData('pila', 'kills').subscribe(data => {
+    service.getRocketLuncherData(RocketLuncher.Pila, 'kills').subscribe(data => {
       console.log('RocketLuncher', data)
       expect(data).toEqual(5)
     })

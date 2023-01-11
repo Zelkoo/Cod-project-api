@@ -6,7 +6,7 @@ svg{
   top: 69px;
   position: absolute;
 }
-.bar-chart-data-kills{
+.bar-chart-data{
   display: flex;
   position: absolute;
   justify-content: flex-end;
