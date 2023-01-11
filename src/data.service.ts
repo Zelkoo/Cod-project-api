@@ -2,10 +2,10 @@ import {Injectable} from "@angular/core";
 import {map, Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {
-  AssaultRifleData, FieldUpgradePropertiesData, GameInfoData, KillStreakData, KillStreakPropertiesData,
+  AssaultRifleData, FieldUpgradePropertiesData, GameInfoData, KillStreakData,
   LargeMachinegunData, MachinegunData,
   MarksmanRifleData, MeleeWeaponData, PistolData, RocketLuncherData,
-  ShotguneData, SniperRifleData, TacticalEquipmentData, WeaponPropertiesData
+  ShotguneData, SniperRifleData, TacticalEquipmentData
 } from "./helpers/data-interface";
 import {
   AssaultRifle, FieldUpgrade, GameInfo, KillStreak,
