@@ -149,3 +149,7 @@ export enum GameInfo {
   Prestige = 'prestige',
   TotalExp = 'totalXp',
 }
+export enum WeaponType {
+  assault = 'weapon_assault_rifle',
+  pistol = 'weapon_pistol'
+}

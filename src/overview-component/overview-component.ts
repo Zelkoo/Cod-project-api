@@ -32,9 +32,9 @@ export class OverviewComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.dataService.getPistolData(Pistols.Renetti, 'hits').subscribe((data: WeaponPropertiesData) => {
-      console.log(data)
-    })
+    // this.dataService.getPistolData(Pistols.Renetti, 'hits').subscribe((data: WeaponPropertiesData) => {
+    //   console.log(data)
+    // })
     this.app.loadAssaultRifleData()
     this.subscription = forkJoin([
       this.dataService.getOverviewData(OverviewDataType.ScorePerMinute),
