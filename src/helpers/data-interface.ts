@@ -433,3 +433,193 @@ export interface FieldUpgradePropertiesData {
   misc2: number;
   uses: number;
 }
+export interface allWeaponData {
+  lifetime: {
+    itemData: {
+      weapon_pistol: {
+        iw8_pi_cpapa: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_pi_mike1911: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_pi_golf21: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_pi_decho: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_pi_papa320: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_pi_mike9: {
+          properties: WeaponPropertiesData;
+        };
+      };
+      weapon_launcher: {
+        iw8_la_gromeo: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_la_rpapa7: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_la_juliet: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_la_kgolf: {
+          properties: WeaponPropertiesData;
+        };
+      };
+      weapon_smg: {
+        iw8_sm_mpapa7: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_sm_augolf: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_sm_papa90: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_sm_charlie9: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_sm_mpapa5: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_sm_smgolf45: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_sm_beta: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_sm_victor: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_sm_uzulu: {
+          properties: WeaponPropertiesData;
+        };
+      };
+      weapon_sniper: {
+        iw8_sn_alpha50: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_sn_xmike109: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_sn_hdromeo: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_sn_delta: {
+          properties: WeaponPropertiesData;
+        };
+      };
+      weapon_lmg: {
+        iw8_lm_pkilo: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_lm_lima86: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_lm_kilo121: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_lm_mgolf34: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_lm_mgolf36: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_lm_mkilo3: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_lm_sierrax: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_la_mike32: {
+          properties: WeaponPropertiesData;
+        };
+      };
+      weapon_marksman: {
+        iw8_sn_sbeta: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_sn_romeo700: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_sn_kilo98: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_sn_crossbow: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_sn_mike14: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_sn_sksierra: {
+          properties: WeaponPropertiesData;
+        };
+      };
+      weapon_shotgun: {
+        iw8_sh_romeo870: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_sh_dpapa12: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_sh_charlie725: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_sh_oscar12: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_sh_mike26: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_sh_aalpha12: {
+          properties: WeaponPropertiesData;
+        };
+      };
+      weapon_assault_rifle: {
+        iw8_ar_akilo47: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_anovember94: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_asierra12: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_falima: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_falpha: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_galima: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_kilo433: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_mcharlie: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_mike4: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_scharlie: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_tango21: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_valpha: {
+          properties: WeaponPropertiesData;
+        };
+        iw8_ar_sierra552: {
+          properties: WeaponPropertiesData;
+        };
+      };
+    };
+  };
+}

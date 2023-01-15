@@ -5,7 +5,7 @@ import {forkJoin} from "rxjs";
 import {BarChartService} from "../bar-chart-service/bar-chart.service";
 import * as assets from '@callofduty/assets'
 import {Router} from "@angular/router";
-import {AssaultRifle, MachineGun} from "../helpers/overview-enum";
+import {AssaultRifle, Pistols, WeaponType} from "../helpers/overview-enum";
 
 @Component({
   selector: 'app-root',
@@ -57,7 +57,7 @@ public  assaultPistoleData: any[];
     const rifleData: any = {};
     const rifleNames = [AssaultRifle.Ak47, AssaultRifle.An94, AssaultRifle.Oden, AssaultRifle.Fal, AssaultRifle.Fr556, AssaultRifle.Cr56Amax, AssaultRifle.Kilo141, AssaultRifle.M13 , AssaultRifle.M4a1,AssaultRifle.FnScar17 ,AssaultRifle.Grau556 ,AssaultRifle.Ram7 ,AssaultRifle.AsVal];
 
-    const observables = rifleNames.map(rifleName => this.dataService.getAssaultRifleData(rifleName, this.dataByOption[this.selectedOption]));
+    const observables = rifleNames.map(rifleName => this.dataService.getWeaponData(WeaponType.assault ,rifleName, this.dataByOption[this.selectedOption]));
 
     forkJoin(observables).subscribe((results: any[]) => {
       results.forEach((result, index) => {
@@ -72,36 +72,20 @@ public  assaultPistoleData: any[];
   }
   loadPistolData(): any {
     const pistolData: any = {};
-    const pistolsName = ['_357', 'renetti', '_1911', 'x16', '_50gs', 'm19'];
+    const pistolsNames = [Pistols.Renetti, Pistols.M19, Pistols.x16, Pistols._50gs, Pistols._1911 ];
 
-    // const observables = pistolsName.map(pistolsName => this.dataService.getPistolData(pistolsName, this.dataByOption[this.selectedOption]));
-
-    // forkJoin(observables).subscribe((results: any[]) => {
-    //   results.forEach((result, index) => {
-    //     const rifleName = pistolsName[index];
-    //     pistolData[rifleName] = result;
-    //   });
-    //
-    //   this.assaultPistoleData = Object.entries(pistolData).map(([name, value]) => ({ name, value }));
-    //   this.assaultPistoleData.sort((a, b) => b.value - a.value);
-    //   this.barChartService.refreshBarChart(this.assaultPistoleData, '.bar-chart-data')
-    // });
-  }
-  loadMachineGunData(): any {
-    const machineGunData: any = {};
-    const machineGunName = [MachineGun.Mp7, MachineGun.Aug, MachineGun.P90, MachineGun.Iso, MachineGun.Mp5, MachineGun.Striker45, MachineGun.Pp19Bizon, MachineGun.Fennec, MachineGun.Uzi ];
-
-    const observables = machineGunName.map(machineGunName => this.dataService.getMachineGunData(machineGunName, this.dataByOption[this.selectedOption]));
+    const observables = pistolsNames.map(pistolsName => this.dataService.getWeaponData(WeaponType.pistol,pistolsName,  this.dataByOption[this.selectedOption]));
 
     forkJoin(observables).subscribe((results: any[]) => {
       results.forEach((result, index) => {
-        const rifleName = machineGunName[index];
-        machineGunData[rifleName] = result;
+        const rifleName = pistolsNames[index];
+        pistolData[rifleName] = result;
       });
 
-      this.assaultMchineData = Object.entries(machineGunData).map(([name, value]) => ({ name, value }));
-      this.assaultMchineData.sort((a, b) => b.value - a.value);
-      this.barChartService.refreshBarChart(this.assaultMchineData, '.bar-chart-data')
+      this.assaultPistoleData = Object.entries(pistolData).map(([name, value]) => ({ name, value }));
+      this.assaultPistoleData.sort((a, b) => b.value - a.value);
+      this.barChartService.refreshBarChart(this.assaultPistoleData, '.bar-chart-data')
     });
   }
+
 };

@@ -14,7 +14,6 @@ export enum OverviewDataType {
   TotalGamePlayed = 'totalGamesPlayed',
   WinLoseRatio = 'winLossRatio'
 }
-
 export enum Pistols {
   Renetti = 'iw8_pi_mike9',
   _50gs = 'iw8_pi_decho',
@@ -148,4 +147,8 @@ export enum GameInfo {
   GainedExp = 'levelXpGained',
   Prestige = 'prestige',
   TotalExp = 'totalXp',
+}
+export enum WeaponType {
+  assault = 'weapon_assault_rifle',
+  pistol = 'weapon_pistol'
 }
