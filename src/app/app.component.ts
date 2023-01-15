@@ -44,10 +44,7 @@ public  assaultPistoleData: any[];
 
   }
   ngOnInit() {
-
-    // console.log(assets.MW.Weapon('iw8_sh_romeo870'))
     console.log(assets.MW.Map('mp_hackney_am'))
-    this.barChartService.createBarChart(this.assaultRifleData, '.bar-chart-data')
   }
   ngOnDestroy() {
     const svg = d3.select('svg');
@@ -56,6 +53,7 @@ public  assaultPistoleData: any[];
   loadAssaultRifleData(): any {
     const rifleData: any = {};
     const rifleNames = [AssaultRifle.Ak47, AssaultRifle.An94, AssaultRifle.Oden, AssaultRifle.Fal, AssaultRifle.Fr556, AssaultRifle.Cr56Amax, AssaultRifle.Kilo141, AssaultRifle.M13 , AssaultRifle.M4a1,AssaultRifle.FnScar17 ,AssaultRifle.Grau556 ,AssaultRifle.Ram7 ,AssaultRifle.AsVal];
+    const assaultRifleNames = Object.keys(AssaultRifle);
 
     const observables = rifleNames.map(rifleName => this.dataService.getWeaponData(WeaponType.assault ,rifleName, this.dataByOption[this.selectedOption]));
 
@@ -64,12 +62,16 @@ public  assaultPistoleData: any[];
         const rifleName = rifleNames[index];
         rifleData[rifleName] = result;
       });
-
-      this.assaultRifleData = Object.entries(rifleData).map(([name, value]) => ({ name, value }));
-      this.assaultRifleData.sort((a, b) => b.value - a.value);
+      this.assaultRifleData = Object.entries(rifleData).map(([name, value], index) => ({ name: assaultRifleNames[index], value }))
       this.barChartService.refreshBarChart(this.assaultRifleData, '.bar-chart-data')
     });
   }
+
+  sortBarChart(): void {
+    this.assaultRifleData.sort((a, b) => b.value - a.value);
+    this.barChartService.refreshBarChart(this.assaultRifleData, '.bar-chart-data')
+  }
+
   loadPistolData(): any {
     const pistolData: any = {};
     const pistolsNames = [Pistols.Renetti, Pistols.M19, Pistols.x16, Pistols._50gs, Pistols._1911 ];
@@ -87,5 +89,4 @@ public  assaultPistoleData: any[];
       this.barChartService.refreshBarChart(this.assaultPistoleData, '.bar-chart-data')
     });
   }
-
 };
