@@ -6,13 +6,6 @@ import {
   mockFetchData,
   mockFieldUpgradeData,
   mockKillStreakData,
-  mockLargeMachineGunData,
-  mockMachineGunData,
-  mockMarksmanRifleData,
-  mockPistolData,
-  mockRocketLuncherData,
-  mockShotgunData,
-  mockSniperRifleData,
   mockTacticalEqData
 } from "./helpers/mock-data";
 import {

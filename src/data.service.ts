@@ -3,18 +3,12 @@ import {map, Observable, of, tap} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {
   allWeaponData,
-  AssaultRifleData, FieldUpgradePropertiesData, GameInfoData, KillStreakData,
-  LargeMachinegunData, MachinegunData,
-  MarksmanRifleData, MeleeWeaponData, PistolData, RocketLuncherData,
-  ShotguneData, SniperRifleData, TacticalEquipmentData
+  FieldUpgradePropertiesData, GameInfoData, KillStreakData,
+  MeleeWeaponData,
+  TacticalEquipmentData
 } from "./helpers/data-interface";
 import {
-  AssaultRifle, FieldUpgrade, GameInfo, KillStreak,
-  LargeMAchineGun, MachineGun,
-  MarksmanRifle, MeleeWeapon,
-  Pistols,
-  RocketLuncher,
-  ShotgunRifle, SniperRifle, TacticalEquipment
+  FieldUpgrade, GameInfo, KillStreak, MeleeWeapon, TacticalEquipment
 } from "./helpers/overview-enum";
 @Injectable({
   providedIn: 'any'
