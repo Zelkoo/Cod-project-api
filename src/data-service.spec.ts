@@ -9,16 +9,9 @@ import {
   mockTacticalEqData
 } from "./helpers/mock-data";
 import {
-  AssaultRifle, AssaultWeaponType,
+  AssaultRifle, WeaponType,
   FieldUpgrade,
   KillStreak,
-  LargeMAchineGun,
-  MachineGun,
-  MarksmanRifle,
-  Pistols,
-  RocketLuncher,
-  ShotgunRifle,
-  SniperRifle,
   TacticalEquipment
 } from "./helpers/overview-enum";
 import {allWeaponData} from "./helpers/data-interface";
@@ -60,7 +53,7 @@ describe('Tests for DataService', () => {
   });
 
   it('Get Weapon Data', () => {
-    service.getWeaponData(AssaultWeaponType.assault ,AssaultRifle.Ak47, 'kills' ).subscribe(data => {
+    service.getWeaponData(WeaponType.assault ,AssaultRifle.Ak47, 'kills' ).subscribe(data => {
       expect(Number(data)).toEqual(125);
     })
     setup(mockAssaaultRifleData)
