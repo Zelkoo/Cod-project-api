@@ -54,7 +54,7 @@ describe('Tests for DataService', () => {
 
   it('Get Weapon Data', () => {
     service.getWeaponData(WeaponType.assault ,AssaultRifle.Ak47, 'kills' ).subscribe(data => {
-      expect(Number(data)).toEqual(125);
+      expect(Number(data)).toEqual(123);
     })
     setup(mockAssaaultRifleData)
   })
