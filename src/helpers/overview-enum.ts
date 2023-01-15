@@ -14,7 +14,6 @@ export enum OverviewDataType {
   TotalGamePlayed = 'totalGamesPlayed',
   WinLoseRatio = 'winLossRatio'
 }
-
 export enum Pistols {
   Renetti = 'iw8_pi_mike9',
   _50gs = 'iw8_pi_decho',

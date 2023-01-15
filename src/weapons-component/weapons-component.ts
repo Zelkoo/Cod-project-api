@@ -14,8 +14,6 @@ import {PistolData} from "../helpers/data-interface";
 
 export class WeaponsComponent implements OnInit {
   private subscription: Subscription;
-  pistol: PistolData
-  rocket: string
   deaths: number;
   kills: number;
   wins: number;

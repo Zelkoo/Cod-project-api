@@ -31,11 +31,6 @@ export class DataService {
   // }
   private weaponData: allWeaponData;
 
-    // public fetchData(): Observable<any> {
-    //   console.log(1)
-    //   return this.http.get('./assets/cod-data.json');
-    // }
-
   public fetchData(): Observable<any> {
     if (this.weaponData) {
       return of(this.weaponData);

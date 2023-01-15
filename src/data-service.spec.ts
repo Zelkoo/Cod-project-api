@@ -14,8 +14,6 @@ import {
   KillStreak,
   TacticalEquipment
 } from "./helpers/overview-enum";
-import {allWeaponData} from "./helpers/data-interface";
-
 
 describe('Tests for DataService', () => {
   let service: DataService;
