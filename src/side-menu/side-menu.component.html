@@ -1,5 +1,5 @@
 <div *ngIf="isOpen">
-  <div class="side-menu">
+  <div [@menuAnimation]="isOpen ? 'open' : 'closed'" class="side-menu">
 
   </div>
 </div>
