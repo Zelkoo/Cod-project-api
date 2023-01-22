@@ -1,0 +1,18 @@
+<div *ngIf="isOpen">
+  <div [@menuAnimation]="isOpen ? 'open' : 'closed'" class="side-menu">
+    <select [(ngModel)]="selectedOption" (change)="loadAssaultRifleData()" class="drop-down-data-options">
+      <option *ngFor="let option of options" [ngValue]="option">{{option}}</option>
+    </select>
+    <button (click)="sortBarChartEvent()">SORT</button>
+    <form>
+      <input type="checkbox" id="pistol" >
+      <label for="pistol"> Pistol Weapons</label><br>
+      <input type="checkbox" id="assault" >
+      <label for="assault"> Assault Rifle Weapons</label><br>
+      <input type="checkbox" id="sniper"  >
+      <label for="sniper"> Sniper Weapons</label><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+</div>
+<button class="side-menu-button" (click)="toggleMenu()">Toggle menu</button>

@@ -1,10 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, SimpleChange, SimpleChanges} from '@angular/core';
 import {DataService} from "../data.service";
 import {forkJoin, Subscription} from "rxjs";
-import {OverviewDataType, Pistols} from "../helpers/overview-enum";
+import {OverviewDataType} from "../helpers/overview-enum";
 import * as d3 from 'd3';
 import {AppComponent} from "../app/app.component";
-import {WeaponPropertiesData} from "../helpers/data-interface";
 
 @Component({
   selector: 'overview-component',
@@ -14,6 +13,7 @@ import {WeaponPropertiesData} from "../helpers/data-interface";
 
 export class OverviewComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
+  @Input() assaultRifleData;
   kdRatio: number;
   kills: number;
   wins: number;
@@ -28,11 +28,16 @@ export class OverviewComponent implements OnInit, OnDestroy {
   timePlayedTotal: number
   totalGamesPlayed: number
   winLossRatio: number
+
+
   constructor(private readonly dataService: DataService, public app: AppComponent) {
   }
-
+  onMenuToggle(isOpen: boolean) {
+    console.log(isOpen);
+  }
   ngOnInit() {
-    this.app.loadAssaultRifleData()
+
+    // this.app.loadAssaultRifleData()
     this.subscription = forkJoin([
       this.dataService.getOverviewData(OverviewDataType.ScorePerMinute),
       this.dataService.getOverviewData(OverviewDataType.ScorePerGame),
@@ -66,7 +71,6 @@ export class OverviewComponent implements OnInit, OnDestroy {
       this.winLossRatio = winLossRatio.toFixed(2);
     });
   }
-
   ngOnDestroy() {
     this.subscription.unsubscribe();
     const svg = d3.select('svg');

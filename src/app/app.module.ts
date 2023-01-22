@@ -10,7 +10,8 @@ import {WeaponsComponent} from "../weapons-component/weapons-component";
 import {OverviewComponent} from "../overview-component/overview-component";
 import {BarChartService} from "../bar-chart-service/bar-chart.service";
 import {DonutChartService} from "../pie-chart-service/donut-chart-service";
-
+import {SideMenuComponent} from "../side-menu/side-menu.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 const routes: Routes = [
   { path: 'match-component', component: MatchComponent },
   { path: 'weapons-component', component: WeaponsComponent },
@@ -23,12 +24,14 @@ const routes: Routes = [
     MatchComponent,
     WeaponsComponent,
     OverviewComponent,
+    SideMenuComponent
   ],
     imports: [
         BrowserModule,
         HttpClientModule,
         FormsModule,
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes),
+        BrowserAnimationsModule
 
     ],
   exports: [RouterModule],
