@@ -37,7 +37,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
   }
   ngOnInit() {
 
-    this.app.loadAssaultRifleData()
+    // this.app.loadAssaultRifleData()
     this.subscription = forkJoin([
       this.dataService.getOverviewData(OverviewDataType.ScorePerMinute),
       this.dataService.getOverviewData(OverviewDataType.ScorePerGame),

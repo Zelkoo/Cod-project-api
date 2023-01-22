@@ -19,8 +19,21 @@ import { transition, trigger, animate, style } from '@angular/animations'
 })
 
 export class SideMenuComponent {
-  isOpen = false;
   @Output() isOpenChange = new EventEmitter<boolean>();
+  @Output() selectedOptionChange = new EventEmitter<any>();
+  @Output() sortData = new EventEmitter<any>();
+
+  selectedOption: any;
+  options = ['kills', 'deaths', 'hits', 'kdRatio', 'headshots', 'accuracy', 'shots'];
+
+  loadAssaultRifleData() {
+    this.selectedOptionChange.emit(this.selectedOption);
+  }
+
+  sortBarChartEvent() {
+    this.sortData.emit()
+  }
+  isOpen = false;
 
   toggleMenu() {
     this.isOpen = !this.isOpen;

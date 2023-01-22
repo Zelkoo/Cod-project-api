@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit,} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit,} from '@angular/core';
 import {DataService} from 'src/data.service';
 import * as d3 from 'd3';
 import {forkJoin} from "rxjs";
@@ -15,7 +15,7 @@ import {AssaultRifle, Pistols, WeaponType} from "../helpers/overview-enum";
 })
 
 export class AppComponent implements OnInit, OnDestroy {
- selectedOption: any;
+  @Input() selectedOption: any;
   options = ['kills', 'deaths', 'hits', 'kdRatio', 'headshots', 'accuracy', 'shots'];
   dataByOption:any = {
     kills: 'kills' ,
@@ -43,15 +43,18 @@ public  assaultPistoleData: any[];
   constructor(public dataService: DataService, public barChartService: BarChartService, public router: Router) {
 
   }
+
   ngOnInit() {
     console.log(assets.MW.Map('mp_hackney_am'))
-  }
-  onMenuToggle(isOpen: boolean) {
-    console.log(isOpen);
   }
   ngOnDestroy() {
     const svg = d3.select('svg');
     svg.remove();
+  }
+
+  onSelectedOptionChange(option: any) {
+    this.selectedOption = option;
+
   }
   loadAssaultRifleData(): any {
     const rifleData: any = {};

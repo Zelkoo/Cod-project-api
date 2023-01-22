@@ -31,7 +31,7 @@ const routes: Routes = [
         HttpClientModule,
         FormsModule,
         RouterModule.forRoot(routes),
-      BrowserAnimationsModule
+        BrowserAnimationsModule
 
     ],
   exports: [RouterModule],
