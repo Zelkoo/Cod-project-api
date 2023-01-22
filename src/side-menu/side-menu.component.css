@@ -1,0 +1,17 @@
+.side-menu-button{
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 21px;
+  background-color: green;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.side-menu{
+  width: 300px;
+  height: 500px;
+  border: 1px red solid;
+  background-color: green;
+  position: absolute;
+  right: 0;
+}

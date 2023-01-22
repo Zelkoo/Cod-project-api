@@ -46,6 +46,9 @@ public  assaultPistoleData: any[];
   ngOnInit() {
     console.log(assets.MW.Map('mp_hackney_am'))
   }
+  onMenuToggle(isOpen: boolean) {
+    console.log(isOpen);
+  }
   ngOnDestroy() {
     const svg = d3.select('svg');
     svg.remove();

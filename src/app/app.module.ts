@@ -10,6 +10,7 @@ import {WeaponsComponent} from "../weapons-component/weapons-component";
 import {OverviewComponent} from "../overview-component/overview-component";
 import {BarChartService} from "../bar-chart-service/bar-chart.service";
 import {DonutChartService} from "../pie-chart-service/donut-chart-service";
+import {SideMenuComponent} from "../side-menu/side-menu.component";
 
 const routes: Routes = [
   { path: 'match-component', component: MatchComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
     MatchComponent,
     WeaponsComponent,
     OverviewComponent,
+    SideMenuComponent
   ],
     imports: [
         BrowserModule,

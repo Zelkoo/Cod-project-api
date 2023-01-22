@@ -5,5 +5,7 @@
     <option *ngFor="let option of options" [ngValue]="option">{{option}}</option>
   </select>
 </div>
-<button (click)="loadPistolData()">PISTOL DATA</button>
-<button (click)="sortBarChart()">SORT</button>
+<button *ngIf="router.url === '/overview-component'" (click)="loadPistolData()">PISTOL DATA</button>
+<button *ngIf="router.url === '/overview-component'" (click)="sortBarChart()">SORT</button>
+<button class="side-menu-button"><</button>
+

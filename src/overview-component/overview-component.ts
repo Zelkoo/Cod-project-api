@@ -28,10 +28,15 @@ export class OverviewComponent implements OnInit, OnDestroy {
   timePlayedTotal: number
   totalGamesPlayed: number
   winLossRatio: number
+
+
   constructor(private readonly dataService: DataService, public app: AppComponent) {
   }
-
+  onMenuToggle(isOpen: boolean) {
+    console.log(isOpen);
+  }
   ngOnInit() {
+
     this.app.loadAssaultRifleData()
     this.subscription = forkJoin([
       this.dataService.getOverviewData(OverviewDataType.ScorePerMinute),
