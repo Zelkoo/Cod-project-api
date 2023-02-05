@@ -1,37 +1,37 @@
 <div class="overview-container">
-  <div class="overview-title" style="color: white">
+  <div class="overview-header">
     <h2>PRZEBIEG KARIERY</h2>
     <h1>TRYB WIELOOSOBOWY</h1>
   </div>
-<div class="stats">
-  <div class="time-game-played" style="color: white">
-    <div class="kdratio">
-      Czas gry <br>
-      <span>
+  <div class="overview-game-stats">
+    <div class="overview-stats">
+      <div class="time-played-total">
+        Czas gry <br>
+        <span>
         {{timePlayedTotal}}h
       </span>
+      </div>
+      <div class="game-played-total">
+        Rozegrane gry <br>
+        <span>{{totalGamesPlayed}}</span>
+      </div>
     </div>
-    <div class="played">
-      Rozegrane gry <br>
-      <span>{{totalGamesPlayed}}</span>
-    </div>
-  </div>
-  <div class="kd-win-ratio" style="color: white">
-    <div class="kdratio">
-      Współ. Z/S <br>
-      <span>
+    <div class="overview-stats" style="color: white">
+      <div class="game-kdratio">
+        Współ. Z/S <br>
+        <span>
         {{kdRatio}}
       </span>
-    </div>
-    <div class="win-lose-ratio">
-      Współ. W/L <br>
-      <span>{{winLossRatio}}</span>
+      </div>
+      <div class="game-win-ratio">
+        Współ. W/L <br>
+        <span>{{winLossRatio}}</span>
+      </div>
     </div>
   </div>
 
-</div>
-  <img src="../assets/logo.png" alt="" class="logo-mw2">
-  <button class="multiplayer-mode" routerLink="/weapons-component" routerLinkActive="active" ariaCurrentWhenActive="page" class="navigation-menu-option">
+  <img alt="" class="logo-mw2" src="../assets/logo.png">
+  <button ariaCurrentWhenActive="page" class="navigation-button"
+          routerLink="/weapons-component" routerLinkActive="active">
   </button>
 </div>
-<side-menu (isOpenChange)="onMenuToggle($event)"></side-menu>

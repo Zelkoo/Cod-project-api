@@ -1,7 +1,8 @@
-<router-outlet ></router-outlet>
-<div *ngIf="router.url === '/overview-component'">
-  <div class="bar-chart-data" ></div>
+<router-outlet>
 
+</router-outlet>
+<div *ngIf="router.url === '/overview-component'">
+  <div class="bar-chart-data"></div>
 </div>
-<button class="side-menu-button"><</button>
-<side-menu (selectedOptionChange)="onSelectedOptionChange($event)" (sortData)="sortBarChart()" (change)="loadAssaultRifleData()"></side-menu>
+<side-menu (change)="loadAssaultRifleData()" (selectedOptionChange)="onSelectedOptionChange($event)"
+           (sortData)="sortBarChart()"></side-menu>

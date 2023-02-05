@@ -1,23 +1,35 @@
-*{
+* {
   font-family: monospace;
 }
-.overview-container{
+
+.overview-container {
   display: flex;
   position: absolute;
   flex-direction: column;
-  left: 0;
   margin-left: 30px;
-  top: 163px;
+  top: 100px;
+  left: 0;
 }
-h1{
+
+.overview-header {
+  color: white;
+}
+
+.overview-header h1 {
   font-size: 60px;
   margin: 4px;
 }
-h2 {
+
+.overview-header h2 {
   font-size: 35px;
   margin: 0;
 }
-.time-game-played{
+
+.overview-game-stats {
+  font-size: 25px;
+}
+
+.overview-stats {
   color: white;
   display: flex;
   justify-content: space-around;
@@ -25,22 +37,7 @@ h2 {
   margin-top: 70px;
 }
 
-.kd-win-ratio {
-  color: white;
-  display: flex;
-  justify-content: space-around;
-}
-
-.win-lose-ratio{
-  position: relative;
-  right: 39px;
-}
-
-.stats{
-  font-size: 25px;
-}
-
-button {
+.navigation-button {
   background: url("../assets/img.png");
   height: 270px;
   position: relative;
@@ -52,11 +49,11 @@ button {
   width: 484px;
 }
 
-button:hover{
+.navigation-button:hover {
   margin-top: 5px
 }
 
-.logo-mw2{
+.logo-mw2 {
   height: 69px;
   width: 233px;
   position: relative;
@@ -64,9 +61,7 @@ button:hover{
   top: 16px;
 }
 
-.chart{
-  position: absolute;
-  top: 450px;
-  right: 0;
-  left: 500px;
+.game-win-ratio {
+  left: -40px;
+  position: relative;
 }

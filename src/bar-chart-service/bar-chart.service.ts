@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import * as d3 from 'd3';
 
 @Injectable({
@@ -6,7 +6,8 @@ import * as d3 from 'd3';
 })
 export class BarChartService {
 
-  constructor() { }
+  constructor() {
+  }
 
   public createBarChart(data: { name: string, value: number }[], el: string) {
     let selected = false
@@ -55,11 +56,10 @@ export class BarChartService {
       .attr('text-anchor', 'end')
 
 
-
     g.selectAll('.bar')
       .data(data)
       .enter().append('rect')
-      .on("click", function() {
+      .on("click", function (name: any) {
         if (selected) {
           d3.select(this).attr("stroke", null);
           d3.select("#text-box").style("display", "none");
@@ -67,6 +67,8 @@ export class BarChartService {
         } else {
           d3.select(this).attr("stroke-width", "4px").attr("stroke", "black");
           selected = true;
+          let selectedValue = name.srcElement.__data__.value
+          console.log(selectedValue)
         }
       })
       .attr('class', 'bar')
@@ -78,7 +80,7 @@ export class BarChartService {
       .attr('width', x.bandwidth())
       .attr('height', (d: any) => height - y(d.value))
       .attr('title', d => d.value)
-      .on('mouseover', function() {
+      .on('mouseover', function () {
         d3.select(this).style('cursor', 'pointer')
       })
 
@@ -104,9 +106,9 @@ export class BarChartService {
       .attr('font-size', '20px')
       .text((d: any) => d.name);
   }
+
   public refreshBarChart(data: { name: string, value: number }[], el: string) {
     d3.select(el).selectAll("*").remove();
     this.createBarChart(data, el);
   }
-
 }

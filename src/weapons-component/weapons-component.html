@@ -1,71 +1,91 @@
-<button role="button" routerLink="/overview-component" routerLinkActive="active" ariaCurrentWhenActive="page" class="navigate-overview-button">Back</button>
-<div class="weapon-container">
-  <div class="title">
-    <h1>Kariera</h1>
-    <span class="title-text">Zobacz najważniejsze statystyki kariery w trybie wieloosobowym Mddern Warfare</span>
-  </div>
-  <div class="overview">
-    <div>
-      <p>144h</p> <br>
-      <span>czas gry</span>
-    </div>
-    <div>
-      <p>1542</p> <br>
-      <span>rozegrane gry</span>
-    </div>
-  </div>
-  <div class="test">
-    <div>
-      <p>21.4</p> <br>
-      <span>Zabojstwa/gra</span>
-    </div>
-    <div>
-      <p>558</p> <br>
-      <span>Punkty na minute</span>
-    </div>
-  </div>
-  <div class="container">
-    <div class="square">
-      Win/Lose
-      <div class="donut2"></div>
-    </div>
-    <div class="square">
-      <span>
-        Zabojstwa/Smierci
-        <div class="donut"></div>
-      </span>
-    </div>
-  </div>
-  <div class="rekord">
-    <span>REKORD</span>
-  </div>
-</div>
-<div class="container-best-weapon">
-  <div class="top">
-    <h1>WYPOSAZENIE</h1>
-    <div class="buttons">
-      <button>Button 1</button>
-      <button>Button 2</button>
-    </div>
-  </div>
-  <h2 class="best-weapons">NAJLEPSZE BRONIE</h2>
-  <div class="images">
-    <img src="https://titles.trackercdn.com/modern-warfare/db/images/icon_cac_weapon_sh_romeo870.png">
-    <span>ZABOJSTWA</span>
-    <img src="https://titles.trackercdn.com/modern-warfare/db/images/icon_cac_weapon_pi_cpapa.png">
-    <img src="https://titles.trackercdn.com/modern-warfare/db/images/icon_cac_weapon_pi_mike9.png">
-  </div>
-  <h3 class="stats">POKAZ STATYSTYKI</h3>
-</div>
-<div class="container-best-map">
-  <div class="top">
-    <h1>OSTATNIE GRY, TRYBY I MAPY</h1>
-    <span class="map-info">Zobacz statystyki dotyczace ostatnich gier, a takze trybow i map</span>
-  </div>
-  <h2 class="last-game">Ostatnia gra</h2>
-  <div class="last-game-container">
-  </div>
-  <hr class="green-line"/>
-  <h3 class="stats">POKAZ STATYSTYKI</h3>
-</div>
+<button ariaCurrentWhenActive="page" class="navigate-overview-button" role="button" routerLink="/overview-component"
+        routerLinkActive="active">Back
+</button>
+<!--<div class="container-best-weapon">-->
+<!--  <div class="top">-->
+<!--    <h1>WYPOSAZENIE</h1>-->
+<!--    <div class="buttons">-->
+<!--      <button>Button 1</button>-->
+<!--      <button>Button 2</button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <h2 class="best-weapons">NAJLEPSZE BRONIE</h2>-->
+<!--  <div class="images">-->
+<!--    <img src="https://titles.trackercdn.com/modern-warfare/db/images/icon_cac_weapon_sh_romeo870.png">-->
+<!--    <span>ZABOJSTWA</span>-->
+<!--    <img src="https://titles.trackercdn.com/modern-warfare/db/images/icon_cac_weapon_pi_cpapa.png">-->
+<!--    <img src="https://titles.trackercdn.com/modern-warfare/db/images/icon_cac_weapon_pi_mike9.png">-->
+<!--  </div>-->
+<!--  <h3 class="stats">POKAZ STATYSTYKI</h3>-->
+<!--</div>-->
+<!--<div class="container-best-map">-->
+<!--  <div class="top">-->
+<!--    <h1>OSTATNIE GRY, TRYBY I MAPY</h1>-->
+<!--    <span class="map-info">Zobacz statystyki dotyczace ostatnich gier, a takze trybow i map</span>-->
+<!--  </div>-->
+<!--  <h2 class="last-game">Ostatnia gra</h2>-->
+<!--  <div class="last-game-container">-->
+<!--  </div>-->
+<!--  <hr class="green-line"/>-->
+<!--  <h3 class="stats">POKAZ STATYSTYKI</h3>-->
+<!--</div>-->
 
+<div class="weapons-container">
+  <div class="statistic">
+    <div class="statistic-title">
+      <h1>Kariera</h1>
+      <span
+        class="statistic-title-text">Zobacz najważniejsze statystyki kariery w trybie wieloosobowym Mddern Warfare</span>
+    </div>
+    <div class="statistic-time-game-played">
+      <div>
+        <p class="data">144h</p>
+        <span>czas gry</span>
+      </div>
+      <div>
+        <p class="data">1587</p>
+        <span>Rozegrane gry</span>
+      </div>
+    </div>
+    <div class="statistic-score-kd-ratio">
+      <div>
+        <p class="data">22.5</p>
+        <span>Srednia Zabójstw</span>
+      </div>
+      <div>
+        <p class="data">6845</p>
+        <span>Punkty na minute</span>
+      </div>
+    </div>
+    <div class="donut-chart-container">
+      <div class="donut-chart-win-lose">
+        <div class="chart-win-lose"></div>
+      </div>
+      <div class="donut-chart-deaths-kills">
+      <span>
+        <div class="chart-kd-ratio"></div>
+      </span>
+      </div>
+    </div>
+    <div class="best-stats">
+      <div>
+        <h2>Osobiste Rekordy</h2>
+        <hr class="line">
+      </div>
+    </div>
+  </div>
+  <div class="weapons-map-container">
+    <div (mouseout)="onMouseOut()" (mouseover)="onMouseOver()" class="statistic-weapon">
+      <div class="images">
+        <img src="https://titles.trackercdn.com/modern-warfare/db/images/icon_cac_weapon_sh_romeo870.png">
+        <img src="https://titles.trackercdn.com/modern-warfare/db/images/icon_cac_weapon_pi_cpapa.png">
+        <img src="https://titles.trackercdn.com/modern-warfare/db/images/icon_cac_weapon_pi_mike9.png">
+      </div>
+      <div class="highlight">
+        <p *ngIf="mouseOver" class="highlight1">Mouse is over the element.</p>
+      </div>
+    </div>
+    <div class="statistic-map">
+    </div>
+  </div>
+</div>
