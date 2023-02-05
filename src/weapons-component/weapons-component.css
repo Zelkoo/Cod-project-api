@@ -1,8 +1,8 @@
-*{
+* {
   color: white;
 }
 
-.navigate-overview-button{
+.navigate-overview-button {
   appearance: none;
   background-color: #FAFBFC;
   border: 1px solid rgba(27, 31, 35, 0.15);
@@ -27,6 +27,7 @@
   white-space: nowrap;
   word-wrap: break-word;
 }
+
 .navigate-overview-button:hover {
   background-color: #30c730;
   text-decoration: none;
@@ -46,176 +47,144 @@
   transition: none 0s;
 }
 
-.navigate-overview-button:focus {
-  outline: 1px transparent;
-}
 
 .navigate-overview-button:before {
   display: none;
 }
 
-.back-button::-webkit-details-marker {
-  display: none;
+.weapons-container {
+  margin: 100px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.weapon-container {
+.weapons-map-container {
   display: flex;
-  border:2px solid #20263e;
-  width: 40%;
-  height: 90%;
-  position: absolute;
-  top: 80px;
-  left: 60px;
+  gap: 150px;
   flex-direction: column;
-  background: #0b0a0ae6;
-  border-radius: 10px;
 }
-.title{
-  border-bottom:2px solid #20263e;
+
+.statistic {
+  min-width: 500px;
+  min-height: 700px;
+  max-width: 450px;
+  border: 2px solid #5e4e96;
+  border-radius: 8px;
+  background-color: #948d6599;
+}
+
+.statistic-weapon {
+  width: 800px;
+  height: 300px;
+  border: 2px solid #5e4e96;
+  border-radius: 8px;
+}
+
+.statistic-map {
+  width: 800px;
+  height: 300px;
+  border: 2px solid #5e4e96;
+  border-radius: 8px;
+}
+
+.container, .donut-chart-container {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-bottom: 1px solid grey;
+
+  /*gap: 50px*/
+}
+
+.statistic-title {
+  display: inline-flex;
   align-items: center;
-  gap: 20px;
-  padding-left: 25px
-}
-
-.title-text{
-  color: #c6c6c6b3
-}
-
-.overview {
-  display: flex;
-  justify-content: space-evenly;
-  height: 70px;
-  border-bottom:2px solid #20263e;
-  position: relative;
-  text-align: center;
-  line-height: 5px;
-}
-.test{
-  display: flex;
-  justify-content: space-evenly;
-  height: 70px;
-  border-bottom:2px solid #20263e;
-  position: relative;
-  text-align: center;
-  line-height: 5px;
-}
-.container {
-  display: flex;
-  height: 100px;
-  width: auto;
-  justify-content: center;
-  gap: 50px;
-  margin: 30px;
-}
-
-.square {
-  width: 300px;
-  height: 410px;
-  border: 1px solid #20263e;
-}
-
-.rekord{
-  display: flex;
-  position: relative;
-  top: 300px;
-  width: auto;
-  margin: 25px;
-  justify-content: center;
-  border: 1px #20263e solid;
-  height: 130px;
-}
-.container-best-weapon {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: absolute;
-  right: 0;
-  border: 2px solid #20263e;
-  background: #0b0a0ae6;
-  margin-right: 60px;
-  top: 82px;
-  border-radius: 11px;
-}
-.top {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  left: 17px;
-}
-.buttons {
-  padding: 5px;
-  margin-left: auto;
-}
-.best-weapons {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  margin-top: 10px;
-  border: 1px solid #20263e;
-}
-.images {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  margin-top: 10px;
-  margin: 5px
-}
-.images img {
-  width: 280px;
-  height: 140px;
-  margin-right: 10px;
-  border: 1px solid #20263e;
-}
-.stats {
-  display: none;
-}
-.container-best-weapon:hover .stats {
-  display: block;
-  margin-top: 10px;
-}
-.container-best-map{
-  width: 978px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  border: 2px solid #20263e;
-  background: #0b0a0ae6;
-  margin-right: 60px;
-  border-radius: 11px;
-  position: absolute;
-  bottom: 13px;
-  right: 0;
-  height: 400px;
-}
-.map-info {
-  position: relative;
-  align-self: center;
-  display: flex;
   font-style: italic;
-  left: 20px;
-  color: #646464;
+  gap: 20px;
+  border-bottom: 1px solid grey;
 }
-.last-game-container{
-  width: 450px;
-  height: 179px;
-  border: 1px solid;
-  left: 50px;
+
+.statistic-title-text {
+  color: #969696;
+}
+
+.statistic-title-text h1 {
+  position: relative;
+  left: 10px;
+}
+
+.statistic-time-game-played, .statistic-score-kd-ratio {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-bottom: 1px solid grey;
+  padding: 8px;
+}
+
+.data {
+  display: flex;
+  justify-content: center
+}
+
+.best-stats {
+  border: 2px #9b8b16 solid;
+  border-radius: 6px;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.best-stats h2 {
+  color: rgba(232, 203, 78, 0.99);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+.line {
+  transform: rotate(90deg);
+  width: 126px;
+  top: 51px;
+  border: 1px solid #f4e064;
+  background: #a55307;
   position: relative;
 }
-.green-line{
-  position: relative;
-  width: 198px;
-  transform: rotate(270deg);
-  bottom: 109px;
-  left: 50px;
-  z-index: 5555555;
-  border: #2ffa5b 1px solid;
+
+.images {
+  height: 120px;
+  width: 120px;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  margin: 56px;
 }
-.game-played{
-  width: 450px;
-  height: 179px;
-  border: 1px solid;
-  left: 50px;
+
+.statistic-weapon {
+  align-items: center;
+  display: flex;
+  background-color: #1f1b1bbf;
+}
+
+.highlight {
+  background-color: #30c730;
+  border-bottom-left-radius: 8px;
   position: relative;
+  top: 137px;
+  left: -233px;
+  height: 30px;
+  width: 631px;
+  border-bottom-right-radius: 8px;
+}
+
+.highlight1 {
+  background-color: #30c730;
+  border-bottom-left-radius: 8px;
+  position: relative;
+  top: 137px;
+  left: -233px;
+  height: 30px;
+  width: 631px;
+  border-bottom-right-radius: 8px;
 }
