@@ -1,45 +1,3 @@
-#version: 2.1
-#
-#workflows:
-#  build-and-test:
-#    jobs:
-#      - build
-#      - approve:
-#          type: approval
-#          requires:
-#            - build
-#          filters:
-#            branches:
-#              only: ci-workflow
-#      - test:
-#          requires:
-#            - approve
-#
-#orbs:
-#  browser-tools: circleci/browser-tools@1.4.0
-#
-#jobs:
-#  build:
-#    docker:
-#      - image: cimg/node:16.18.1
-#    steps:
-#      - checkout
-#      - run:
-#          name: Install dependecies
-#          command: npm install && npm install @callofduty/assets
-#      - run:
-#          name: Build
-#          command: npm run build
-#  test:
-#    docker:
-#      - image: cimg/node:16.19.0-browsers
-#    steps:
-#      - checkout
-#      - run: npm install
-#      - browser-tools/install-chrome:
-#          channel: stable
-#      - run:
-#          command: npm test
 version: 2.1
 orbs:
   node: circleci/node@3.0.0
@@ -57,11 +15,14 @@ jobs:
       - unless:
           condition: <<pipeline.parameters.run_alternative_servers>>
           steps:
-            - run: echo "TODO Set CircleCI parameter/ENV variable with values for REGULAR."
+            - run:
+                name: Build
+                command: npm run build
       - when:
           condition: <<pipeline.parameters.run_alternative_servers>>
           steps:
-            - run: echo "TODO Set CircleCI parameter/ENV variable with values for ALTERNATIVE."
+            - run:
+              command: npm test
       - run: echo "USE CircleCI parameter/ENV variable here and in next steps"
 
 workflows:
