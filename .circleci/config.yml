@@ -10,7 +10,7 @@ workflows:
             - build
           filters:
             branches:
-              only: master
+              only: ci-workflow
       - test:
           requires:
             - approve
