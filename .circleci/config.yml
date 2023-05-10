@@ -30,10 +30,10 @@ jobs:
                 channel: stable
           steps:
             - checkout
+            - run: echo "DRUGI WORKFLOW ODPALONY."
             - run: npm install
             - run:
                 command: npm test
-            - run: echo "DRUGI WORKFLOW ODPALONY."
       - run: echo "USE CircleCI parameter/ENV variable here and in next steps"
 
 workflows:
