@@ -10,7 +10,7 @@ parameters:
 jobs:
   testjob:
     docker:
-      - image: alpine:3.18.0
+      - image: cimg/node:16.18.1
     steps:
       - unless:
           condition: <<pipeline.parameters.run_alternative_servers>>
