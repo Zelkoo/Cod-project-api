@@ -71,4 +71,4 @@ workflows:
       - testjob:
           filters:
             branches:
-              ignore: /.*/
+              ignore: ci-workflow
