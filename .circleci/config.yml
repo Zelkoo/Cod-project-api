@@ -68,3 +68,8 @@ workflows:
       - hold:
           type: approval
           requires: [testjob]
+      - testjob:
+          filters:
+            branches:
+              only:
+                - ci-workflow
