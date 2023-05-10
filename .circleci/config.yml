@@ -1,3 +1,37 @@
+#version: 2.1
+#orbs:
+#  node: circleci/node@3.0.0
+#
+#parameters:
+#  run_alternative_servers:
+#    type: string
+#    default: ""
+#
+#jobs:
+#  testjob:
+#    docker:
+#      - image: cimg/node:16.18.1
+#    steps:
+#      - unless:
+#          condition: <<pipeline.parameters.run_alternative_servers>>
+#          steps:
+#            - checkout
+#            - run:
+#                name: Install dependecies
+#                command: npm install && npm install @callofduty/assets
+#            - run:
+#                name: Build
+#                command: npm run build
+#      - when:
+#          condition: <<pipeline.parameters.run_alternative_servers>>
+#          steps:
+#            - run: echo "TODO Set CircleCI parameter/ENV variable with values for ALTERNATIVE."
+#      - run: echo "USE CircleCI parameter/ENV variable here and in next steps"
+#
+#workflows:
+#  testworkflow:
+#    jobs:
+#      - testjob
 version: 2.1
 orbs:
   node: circleci/node@3.0.0
@@ -31,4 +65,10 @@ jobs:
 workflows:
   testworkflow:
     jobs:
-      - testjob
+      - hold:
+          type: approval
+          requires: [testjob]
+      - testjob:
+          filters:
+            branches:
+              ignore: /.*/
