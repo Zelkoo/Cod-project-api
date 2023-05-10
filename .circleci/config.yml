@@ -16,6 +16,7 @@ jobs:
           condition: <<pipeline.parameters.run_alternative_servers>>
           steps:
             - checkout
+            - run: echo "Domyslny workflow bez podawania condition triger pipelines."
             - run:
                 name: Install dependecies
                 command: npm install && npm install @callofduty/assets
@@ -30,7 +31,7 @@ jobs:
                 channel: stable
           steps:
             - checkout
-            - run: echo "DRUGI WORKFLOW ODPALONY."
+            - run: echo "Workflow po podaniu codition pipelines triger run_alternative_servers & true."
             - run: npm install
             - run:
                 command: npm test
