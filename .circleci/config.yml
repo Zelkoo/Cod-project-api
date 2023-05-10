@@ -4,7 +4,16 @@ workflows:
   build-and-test:
     jobs:
       - build
-      - test
+      - approve:
+          type: approval
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+      - test:
+          requires:
+            - approve
 
 orbs:
   browser-tools: circleci/browser-tools@1.4.0
