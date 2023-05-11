@@ -18,6 +18,7 @@ export class DataService {
   constructor(private http: HttpClient) {
   }
 
+  
   // headers = new HttpHeaders({
   //   'X-RapidAPI-Key': '',
   //   'X-RapidAPI-Host': 'call-of-duty-modern-warfare.p.rapidapi.com'
